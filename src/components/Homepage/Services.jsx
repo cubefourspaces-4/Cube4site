@@ -1,167 +1,212 @@
 import React from 'react';
-import { CheckCircle2, ArrowRight, ArrowLeft, Sparkles, Hammer, Layers } from 'lucide-react';
+import {
+  CheckCircle2,
+  ArrowRight,
+  DraftingCompass,
+  Building2,
+  ClipboardCheck,
+  Ruler,
+  BadgeCheck,
+} from 'lucide-react';
 
 const services = [
   {
     id: '01',
-    title: 'Smart Interiors for Modern Living',
-    subtitle: 'Interior Design',
-    description: 'We design functional and beautiful spaces for real life. We create layouts that maximize every square foot, focusing on lighting, materials, and flow.',
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80',
+    title: 'Interior Design',
+    description:
+      'Functional and elegant interior design for homes, offices, kitchens, wardrobes, and complete living spaces.',
     features: [
-      'Kitchen and wardrobe design',
-      'Space optimization',
-      '3D layout previews',
-      'Home and office styling'
+      'Space planning',
+      '3D design preview',
+      'Kitchen & wardrobe design',
+      'Home and office styling',
     ],
-    icon: <Sparkles className="w-5 h-5 text-indigo-600" />
+    icon: DraftingCompass,
   },
   {
     id: '02',
-    title: 'Reliable Construction and Foundations',
-    subtitle: 'Construction',
-    description: 'We manage residential and commercial projects with a focus on material quality, safety, and completing the work on time.',
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80',
+    title: 'Construction',
+    description:
+      'Reliable residential and commercial construction with strong supervision, quality materials, and planned delivery.',
     features: [
-      'Full project management',
-      'Top-quality materials',
-      'Safety checks',
-      'On-time completion'
+      'Project supervision',
+      'Quality materials',
+      'Safety-focused work',
+      'Timeline-based delivery',
     ],
-    icon: <Hammer className="w-5 h-5 text-indigo-600" />
+    icon: Building2,
   },
   {
     id: '03',
-    title: 'Complete Turnkey Services',
-    subtitle: 'Turnkey Solutions',
-    description: 'We handle everything from start to finish. You get a ready-to-move-in space without the stress of working with multiple contractors.',
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80',
+    title: 'Turnkey Projects',
+    description:
+      'Complete design and build execution from planning to final handover through one responsible project team.',
     features: [
-      'Construction and design together',
-      'One point of contact',
-      'No communication gaps',
-      'Ready-to-use delivery'
+      'Single point of contact',
+      'Design + build execution',
+      'Transparent coordination',
+      'Ready-to-use handover',
     ],
-    icon: <Layers className="w-5 h-5 text-indigo-600" />
+    icon: ClipboardCheck,
   },
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Consult',
+    desc: 'We understand your space, budget, style, and timeline.',
+  },
+  {
+    step: '02',
+    title: 'Plan',
+    desc: 'We prepare layouts, material ideas, and execution roadmap.',
+  },
+  {
+    step: '03',
+    title: 'Build',
+    desc: 'Our team manages construction and interior work with regular updates.',
+  },
+  {
+    step: '04',
+    title: 'Handover',
+    desc: 'We inspect, finish, and deliver your completed space.',
+  },
+];
+
+const benefits = [
+  'Transparent project planning',
+  'Clear delivery timelines',
+  'Quality material selection',
+  'One team from design to handover',
 ];
 
 export default function Services() {
   return (
     <section
       id="services"
-      className="relative py-28 md:py-40 bg-white text-stone-900 overflow-hidden font-[family-name:Inter,sans-serif] w-full flex justify-center"
+      className="relative overflow-hidden bg-[#f8f7f4] py-20 md:py-28 font-[family-name:Inter,sans-serif]"
     >
-      {/* Subtle Background Glows */}
-      <div className="absolute left-16 top-1/4 h-80 w-80 rounded-full bg-indigo-500/5 blur-[120px]" />
-      <div className="absolute bottom-1/4 right-16 h-96 w-96 rounded-full bg-sky-500/5 blur-[120px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(79,70,229,0.08),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.08),transparent_32%)]" />
 
-      <div className="relative z-10 w-full max-w-8xl px-6 md:px-16 mx-auto">
-        
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 md:mb-28">
-          <div className="max-w-4xl text-left">
-            <span className="mb-4 block text-xs font-semibold tracking-[0.25em] uppercase text-indigo-600 font-[family-name:Inter,sans-serif]">
-              What We Do
+      <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-14 xl:px-20 2xl:px-24">
+        {/* Header */}
+        <div className="mb-16 grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+          <div>
+            <span className="mb-5 inline-flex rounded-full border border-stone-200 bg-white px-5 py-2 text-sm font-bold uppercase tracking-[0.18em] text-indigo-700 shadow-sm">
+              Our Services
             </span>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-stone-950 mb-6 font-[family-name:Inter,sans-serif] leading-[1.05]">
-              Services We Provide
+
+            <h2 className="max-w-5xl text-5xl font-black tracking-[-0.04em] text-stone-950 sm:text-6xl lg:text-7xl xl:text-8xl">
+              Design. Build. Deliver.
             </h2>
-            <p className="text-sm md:text-base text-stone-600 leading-relaxed max-w-3xl">
-              We create smart, sustainable spaces for living and working with our end-to-end capabilities.
+
+            <p className="mt-7 max-w-3xl text-lg font-medium leading-8 text-stone-700 md:text-xl">
+              Cube4Spaces creates beautiful, functional, and ready-to-use
+              spaces with complete interior, construction, and turnkey project
+              support.
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
-            <button 
-              aria-label="Previous" 
-              className="flex items-center justify-center w-12 h-12 rounded-full border border-stone-200 text-stone-600 hover:bg-stone-950 hover:text-white transition-all duration-300"
-            >
-              <ArrowLeft className="w-4 h-4" />
-            </button>
-            <button 
-              aria-label="Next" 
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-stone-950 text-white hover:bg-stone-800 transition-all duration-300 shadow-md"
-            >
-              <ArrowRight className="w-4 h-4" />
-            </button>
+          <div className="rounded-[2rem] border border-stone-800 bg-stone-950 p-8 text-white shadow-2xl">
+            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
+              <BadgeCheck className="h-7 w-7" />
+            </div>
+
+            <h3 className="text-2xl font-extrabold leading-tight">
+              End-to-end project ownership
+            </h3>
+
+            <p className="mt-4 text-base leading-7 text-white/75">
+              From first consultation to final handover, our team keeps your
+              project structured, transparent, and professionally managed.
+            </p>
           </div>
         </div>
 
-        {/* Services Grid with Widened Containers */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-32">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="group flex flex-col bg-stone-50/50 border border-stone-200/80 backdrop-blur-sm rounded-3xl p-9 md:p-12 transition-all duration-500 hover:shadow-2xl hover:border-indigo-200 justify-between h-full"
-            >
-              <div>
-                {/* ID Header Only - Logo/Icon Removed */}
-                <div className="flex justify-between items-center mb-10">
-                  <span className="text-4xl font-extrabold text-stone-300 font-[family-name:Inter,sans-serif]">
+        {/* Services Cards */}
+        <div className="grid gap-8 md:grid-cols-3">
+          {services.map((service) => {
+            const Icon = service.icon;
+
+            return (
+              <article
+                key={service.id}
+                className="group rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-xl xl:p-10"
+              >
+                <div className="mb-8 flex items-center justify-between">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-stone-200 bg-[#f8f7f4] text-stone-950 transition-all duration-300 group-hover:border-indigo-700 group-hover:bg-indigo-700 group-hover:text-white">
+                    <Icon className="h-7 w-7" strokeWidth={1.8} />
+                  </div>
+
+                  <span className="text-5xl font-black text-stone-200">
                     {service.id}
                   </span>
                 </div>
 
-                {/* Subtitle */}
-                <span className="text-[10px] font-bold tracking-[0.2em] text-indigo-600 uppercase mb-3 block font-[family-name:Inter,sans-serif]">
-                  {service.subtitle}
-                </span>
-
-                {/* Title */}
-                <h3 className="text-xl md:text-2xl font-bold text-stone-950 mb-6 leading-snug font-[family-name:Inter,sans-serif] group-hover:text-indigo-600 transition-colors">
+                <h3 className="text-3xl font-black tracking-tight text-stone-950 xl:text-4xl">
                   {service.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-xs text-stone-600 leading-relaxed mb-8">
+                <p className="mt-5 min-h-[112px] text-lg font-medium leading-8 text-stone-600">
                   {service.description}
                 </p>
-              </div>
 
-              {/* Features List */}
-              <ul className="space-y-3.5 border-t border-stone-200/60 pt-6 mt-auto">
-                {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-stone-700 text-xs font-medium leading-tight">
-                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-3.5 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                <ul className="mt-8 space-y-4 border-t border-stone-100 pt-7">
+                  {service.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-3 text-base font-bold text-stone-800"
+                    >
+                      <CheckCircle2
+                        className="mt-0.5 h-5 w-5 flex-shrink-0 text-indigo-700"
+                        strokeWidth={2}
+                      />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            );
+          })}
         </div>
 
-        {/* --- Methodology Section --- */}
-        <div className="border-t border-stone-100 pt-20 mb-28">
-          <div className="text-left max-w-4xl mb-14">
-            <span className="block text-xs font-semibold tracking-[0.25em] uppercase text-indigo-600 mb-4 font-[family-name:Inter,sans-serif]">
-              Methodology
+        {/* Process Section */}
+        <div className="mt-24 grid gap-12 rounded-[2.5rem] border border-stone-200 bg-white p-8 shadow-sm md:p-12 lg:grid-cols-[0.7fr_1.3fr] xl:p-14">
+          <div>
+            <span className="text-sm font-black uppercase tracking-[0.18em] text-indigo-700">
+              How We Work
             </span>
-            <h3 className="text-3xl md:text-5xl font-bold text-stone-950 tracking-tight leading-none mb-5 font-[family-name:Inter,sans-serif]">
-              How We Work With You
+
+            <h3 className="mt-5 text-4xl font-black tracking-tight text-stone-950 md:text-5xl xl:text-6xl">
+              A simple process for stress-free execution.
             </h3>
-            <p className="text-xs text-stone-600 leading-relaxed max-w-3xl">
-              We believe in clear communication and complete transparency. This ensures your project is completed on time and meets high standards of execution.
+
+            <p className="mt-6 text-lg font-medium leading-8 text-stone-600">
+              We keep your project journey clear, practical, and easy to track
+              from planning to delivery.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { step: '01', title: 'Consultation', desc: 'We listen to your ideas and discuss your budget and timeline.' },
-              { step: '02', title: 'Planning', desc: 'Our team creates 3D views and structural plans.' },
-              { step: '03', title: 'Execution', desc: 'We begin construction and interior setup with daily updates.' },
-              { step: '04', title: 'Handover', desc: 'Final check and delivery of your beautiful space.' }
-            ].map((item, idx) => (
-              <div 
-                key={idx} 
-                className="group p-8 rounded-3xl bg-stone-50/50 border border-stone-200/60 hover:border-indigo-500 hover:bg-white transition-all duration-300"
+
+          <div className="grid gap-6 sm:grid-cols-2">
+            {process.map((item) => (
+              <div
+                key={item.step}
+                className="rounded-3xl border border-stone-200 bg-[#f8f7f4] p-7 transition-all duration-300 hover:border-indigo-200 hover:bg-white hover:shadow-md"
               >
-                <span className="text-[10px] text-stone-400 font-bold mb-6 block tracking-widest">{item.step}</span>
-                <h4 className="text-base font-bold text-stone-950 font-[family-name:Inter,sans-serif] mb-3">
+                <div className="mb-5 flex items-center justify-between">
+                  <span className="text-sm font-black text-indigo-700">
+                    {item.step}
+                  </span>
+
+                  <Ruler className="h-5 w-5 text-stone-400" strokeWidth={1.8} />
+                </div>
+
+                <h4 className="text-2xl font-black text-stone-950">
                   {item.title}
                 </h4>
-                <p className="text-[11px] text-stone-600 leading-relaxed">
+
+                <p className="mt-3 text-base font-medium leading-7 text-stone-600">
                   {item.desc}
                 </p>
               </div>
@@ -169,42 +214,43 @@ export default function Services() {
           </div>
         </div>
 
-        {/* --- Why Choose Us Section --- */}
-        <div className="border-t border-stone-100 pt-20">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
-            <div className="max-w-2xl text-left">
-              <span className="text-xs font-semibold tracking-[0.25em] uppercase text-indigo-600 font-[family-name:Inter,sans-serif] mb-3 block">
-                Why Choose Cube4Spaces
-              </span>
-              <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-stone-950 mb-6 font-[family-name:Inter,sans-serif]">
-                We Build Your Vision From The Ground Up
-              </h3>
-              <p className="text-xs text-stone-600 leading-relaxed mb-8 max-w-2xl">
-                Our collaborative process ensures you stay updated at every stage, preventing miscommunication and cost overruns. We deliver premium material quality with flawless execution.
-              </p>
-            </div>
+        {/* Why Choose Us */}
+        <div className="mt-24 grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+          <div>
+            <span className="text-sm font-black uppercase tracking-[0.18em] text-indigo-700">
+              Why Choose Cube4Spaces
+            </span>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl w-full">
-              {[
-                'On-time project delivery assurance',
-                'Transparent pricing schedules',
-                'Single-point-of-contact convenience',
-                'Premium material procurement'
-              ].map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="flex items-center space-x-4 bg-stone-50 border border-stone-200/80 px-5 py-4 rounded-2xl hover:border-indigo-300 transition-colors"
-                >
-                  <CheckCircle2 className="w-5 h-5 text-indigo-600 flex-shrink-0" />
-                  <span className="text-xs font-bold text-stone-800 tracking-wide leading-tight">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <h3 className="mt-5 max-w-3xl text-4xl font-black tracking-tight text-stone-950 md:text-5xl xl:text-6xl">
+              Better planning. Better finish. Better handover.
+            </h3>
+
+            <p className="mt-6 max-w-3xl text-lg font-medium leading-8 text-stone-600">
+              We combine design thinking, execution discipline, and transparent
+              coordination to help you build a space that looks good and works
+              well.
+            </p>
+
+            <button className="mt-9 inline-flex items-center gap-3 rounded-full bg-stone-950 px-8 py-4 text-base font-black text-white shadow-lg transition hover:bg-indigo-700">
+              Start Your Project
+              <ArrowRight className="h-5 w-5" />
+            </button>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            {benefits.map((benefit) => (
+              <div
+                key={benefit}
+                className="flex items-center gap-4 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-indigo-200 hover:shadow-md"
+              >
+                <CheckCircle2 className="h-6 w-6 flex-shrink-0 text-indigo-700" />
+                <span className="text-lg font-black leading-snug text-stone-900">
+                  {benefit}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
-        
       </div>
     </section>
   );

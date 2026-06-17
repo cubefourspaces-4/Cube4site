@@ -1,175 +1,185 @@
-import { useEffect, useRef } from "react";
-import { Star, Quote, Sparkles } from "lucide-react";
-import Lenis from "@studio-freight/lenis";
-import { motion, useInView } from "framer-motion";
+import { Star, Quote } from "lucide-react";
+import { useState } from "react";
 
 const testimonials = [
   {
     name: "Priya Mehta",
-    company: "Whitefield, Bangalore",
-    role: "3BHK Apartment Interiors",
+    location: "Bangalore",
+    project: "3BHK Home Interiors",
     content:
-      "We wanted a modern, clutter-free home — and Cube4Spaces delivered exactly that. The modular kitchen and wardrobes are high quality, and the team was always available to answer questions. They finished on time and within budget. Would definitely recommend.",
+      "Cube4Spaces delivered a clean and functional home interior. The kitchen, wardrobes, and storage planning were handled professionally and completed on time.",
     rating: 5,
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=80",
   },
   {
     name: "Aditya Soman",
-    company: "Andheri, Mumbai",
-    role: "2BHK Apartment Interiors",
+    location: "Mumbai",
+    project: "2BHK Apartment Interiors",
     content:
-      "I was nervous about hiring an interior designer for my small 2BHK. But Cube4Spaces understood my space constraints perfectly. They suggested smart storage solutions and gave me a beautiful 3D design before starting. The final result exceeded my expectations. Thank you!",
+      "The team understood our space limitations and gave us practical design ideas. The final output was modern, simple, and very useful for daily living.",
     rating: 5,
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80",
   },
   {
     name: "Neha Reddy",
-    company: "Hitech City, Hyderabad",
-    role: "Founder, Innovate Works",
+    location: "Hyderabad",
+    project: "Office Interior",
     content:
-      "Cube4Spaces designed our coworking office from scratch. They understood our brand vibe and created a space that's both productive and relaxing. The team was professional, punctual, and transparent about costs. Our members love the new space. Highly recommended for commercial projects.",
+      "Our office was planned with the right balance of work zones, meeting areas, and brand feel. The process was smooth and well coordinated.",
     rating: 5,
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80",
   },
   {
     name: "Rajesh Iyer",
-    company: "Hinjewadi, Pune",
-    role: "Complete Home Turnkey (2BHK Villa)",
+    location: "Pune",
+    project: "Complete Turnkey Home",
     content:
-      "This was our first home, and we didn't know where to start. Cube4Spaces handled everything — from construction to furniture to final decor. We didn't have to deal with multiple vendors or chase anyone. The quality is excellent, and we moved in exactly when they promised. Best decision we made.",
+      "Cube4Spaces managed everything from execution to final setup. We had one team, one timeline, and clear updates throughout the project.",
     rating: 5,
+    image:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80",
   },
   {
     name: "Sneha Kapoor",
-    company: "Indiranagar, Bangalore",
-    role: "Modular Kitchen Only",
+    location: "Bangalore",
+    project: "Modular Kitchen",
     content:
-      "We only needed a modular kitchen, not a full interior. Cube4Spaces didn't push us to do more. They designed a beautiful kitchen with soft-close drawers and a tall unit. Installation was clean and fast. One small delay in material delivery, but they communicated well. Happy overall.",
-    rating: 4.5,
+      "The kitchen design was practical, elegant, and easy to use. The team suggested good materials and completed the installation neatly.",
+    rating: 5,
+    image:
+      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80",
   },
   {
     name: "Karthik Nair",
-    company: "T Nagar, Chennai",
-    role: "Owner, Tangerine Boutique",
+    location: "Chennai",
+    project: "Boutique Interior",
     content:
-      "Cube4Spaces designed our women's clothing boutique on a tight budget. They created an elegant, Instagram-worthy space without overspending. The display racks, lighting, and trial rooms are perfect. Our customers constantly compliment the store. Great value for money.",
+      "They created a premium-looking retail space within our budget. The lighting, display area, and customer flow were planned very well.",
     rating: 5,
+    image:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80",
   },
 ];
 
-function TestimonialCard({ testimonial, index }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative bg-stone-50/50 border border-stone-200/80 rounded-[2.5rem] p-10 shadow-sm transition-all duration-500 hover:shadow-2xl hover:border-indigo-400/50 w-full max-w-lg mx-auto h-full flex flex-col justify-between"
-    >
-      <div className="absolute top-8 right-8 text-stone-200 group-hover:text-indigo-500/5 transition-colors">
-        <Quote className="w-20 h-20" />
-      </div>
-
-      <div className="relative z-10 flex flex-col h-full justify-between">
-        <div>
-          <div className="flex items-center gap-1 mb-6">
-            {[...Array(Math.floor(testimonial.rating))].map((_, i) => (
-              <Star key={i} className="w-4 h-4 text-indigo-600 fill-current" />
-            ))}
-            {testimonial.rating % 1 !== 0 && (
-              <Star className="w-4 h-4 text-indigo-600 fill-half" />
-            )}
-          </div>
-
-          <p className="text-xs text-stone-600 leading-relaxed mb-8">
-            "{testimonial.content}"
-          </p>
-        </div>
-
-        <div className="flex items-center border-t border-stone-200/60 pt-6 mt-auto">
-          <div>
-            <h4 className="text-sm font-extrabold text-stone-950 mb-1.5 font-[family-name:Inter,sans-serif]">
-              {testimonial.name}
-            </h4>
-            <p className="text-[10px] text-stone-500 font-bold uppercase tracking-wider">
-              {testimonial.role} • <span className="text-indigo-600">{testimonial.company}</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function Testimonials() {
-  // Lenis smooth scrolling integration
-  useEffect(() => {
-    const lenis = new Lenis({
-      smooth: true,
-      lerp: 0.1,
-      wheelMultiplier: 1.2,
-    });
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = testimonials[activeIndex];
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-    return () => lenis.destroy();
-  }, []);
+  const headingFont =
+    "font-[family-name:'Playfair_Display','Cormorant_Garamond',Georgia,serif]";
 
   return (
-    <section className="py-32 md:py-48 bg-white text-stone-900 relative overflow-hidden font-[family-name:Inter,sans-serif] flex justify-center">
-      {/* Subtle Background Accent Gradient */}
-      <div className="absolute left-16 top-1/4 h-80 w-80 rounded-full bg-indigo-500/5 blur-[120px]" />
-      <div className="absolute bottom-1/4 right-16 h-96 w-96 rounded-full bg-sky-500/5 blur-[120px]" />
-
-      <div className="relative z-10 max-w-[1700px] mx-auto px-6 lg:px-12 w-full">
-        
+    <section className="relative overflow-hidden bg-[#f7f7f5] py-20 text-stone-950 md:py-28">
+      <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-12 xl:px-16">
         {/* Header */}
-        <div className="text-center mb-20 md:mb-28 max-w-4xl mx-auto">
-          <div className="inline-flex items-center space-x-3 bg-indigo-50 px-6 py-2.5 rounded-full mb-8 border border-indigo-100 shadow-sm">
-            <Sparkles className="w-4 h-4 text-indigo-600 animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-indigo-600">
-              Assistance Center
+        <div className="mx-auto mb-14 max-w-5xl text-center">
+          <div className="mb-5 flex items-center justify-center gap-2">
+            <span className="h-7 w-[2px] rotate-45 rounded-full bg-red-500" />
+
+            <span className="text-[11px] font-black uppercase tracking-[0.2em] text-stone-700">
+              What Clients Say
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-stone-950 mb-6 leading-none">
-            What Our <span className="font-serif italic font-normal text-indigo-600">Clients Say</span>
+
+          <h2
+            className={`${headingFont} text-5xl font-semibold leading-[0.9] tracking-[-0.055em] text-stone-900 sm:text-6xl md:text-7xl lg:text-8xl`}
+          >
+            Honest Feedback
+            <br />
+            From Valued People
           </h2>
-          <p className="text-sm md:text-base text-stone-500 max-w-2xl mx-auto leading-relaxed">
-            Don't just take our word for it. Hear from the businesses and homeowners we've helped transform.
+
+          <p className="mx-auto mt-7 max-w-2xl text-sm font-medium leading-7 text-stone-500 md:text-base">
+            Real feedback from homeowners and businesses who trusted
+            Cube4Spaces to design, execute, and deliver their spaces with care.
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-28">
-          {testimonials.map((t, i) => (
-            <TestimonialCard key={`testimonial-${i}`} testimonial={t} index={i} />
+        {/* Main Testimonial Layout */}
+        <div className="mx-auto grid max-w-[1400px] items-center gap-8 lg:grid-cols-[190px_1fr]">
+          {/* Left Image Selector */}
+          <div className="mx-auto flex w-full max-w-[190px] flex-row gap-3 rounded-[2rem] bg-white p-3 shadow-sm ring-1 ring-stone-200 lg:flex-col">
+            {testimonials.slice(0, 3).map((testimonial, index) => (
+              <button
+                key={testimonial.name}
+                onClick={() => setActiveIndex(index)}
+                className={`relative h-24 flex-1 overflow-hidden rounded-[1.4rem] transition-all duration-300 lg:h-36 ${
+                  activeIndex === index
+                    ? "ring-2 ring-red-400 ring-offset-2 ring-offset-white"
+                    : "opacity-70 grayscale hover:opacity-100 hover:grayscale-0"
+                }`}
+                aria-label={`View testimonial from ${testimonial.name}`}
+              >
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="h-full w-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+
+          {/* Featured Review Card */}
+          <article className="relative min-h-[420px] overflow-hidden rounded-[2rem] bg-white px-8 py-10 shadow-sm ring-1 ring-stone-100 md:rounded-[2.5rem] md:px-20 md:py-16 xl:px-24">
+            <Quote className="absolute -right-4 -top-8 h-44 w-44 rotate-180 text-stone-100 md:h-64 md:w-64" />
+
+            <div className="relative z-10 flex h-full flex-col justify-between">
+              <div>
+                <p className="max-w-5xl text-3xl font-medium leading-tight tracking-[-0.04em] text-stone-900 md:text-5xl">
+                  {active.content}
+                </p>
+
+                <p className="mt-7 max-w-2xl text-sm font-medium leading-7 text-stone-500 md:text-base">
+                  Trust, clarity, and consistent execution are the reasons our
+                  clients continue to recommend Cube4Spaces.
+                </p>
+              </div>
+
+              <div className="mt-12 grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
+                <div>
+                  <h4 className="text-lg font-black tracking-[-0.02em] text-stone-950">
+                    {active.name}
+                  </h4>
+
+                  <p className="mt-1 text-sm font-medium text-stone-500">
+                    {active.project}, {active.location}
+                  </p>
+
+                  <div className="mt-5 h-px w-full max-w-md border-t border-dashed border-stone-300" />
+                </div>
+
+                <div className="flex items-center gap-1">
+                  {[...Array(Math.floor(active.rating))].map((_, index) => (
+                    <Star
+                      key={index}
+                      className="h-5 w-5 fill-red-500 text-red-500"
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        {/* Bottom Selectors */}
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          {testimonials.map((testimonial, index) => (
+            <button
+              key={`${testimonial.name}-${testimonial.project}`}
+              onClick={() => setActiveIndex(index)}
+              className={`rounded-full px-5 py-2 text-xs font-black uppercase tracking-[0.14em] transition-all ${
+                activeIndex === index
+                  ? "bg-stone-950 text-white"
+                  : "bg-white text-stone-500 ring-1 ring-stone-200 hover:text-stone-950"
+              }`}
+            >
+              {testimonial.name}
+            </button>
           ))}
         </div>
-
-        {/* Stats */}
-        <div className="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 bg-stone-50/60 backdrop-blur-sm border border-stone-200/80 rounded-[2.5rem] p-12 md:p-14">
-          <div className="flex flex-col items-center justify-center p-4 text-center border-r border-stone-100">
-            <span className="text-indigo-600 font-black text-3xl md:text-5xl mb-2 font-[family-name:Inter,sans-serif]">4.9/5</span>
-            <span className="text-[9px] font-extrabold tracking-widest uppercase text-stone-500 font-[family-name:Inter,sans-serif]">Average Rating</span>
-          </div>
-          <div className="flex flex-col items-center justify-center p-4 text-center lg:border-r border-stone-100">
-            <span className="text-indigo-600 font-black text-3xl md:text-5xl mb-2 font-[family-name:Inter,sans-serif]">50+</span>
-            <span className="text-[9px] font-extrabold tracking-widest uppercase text-stone-500 font-[family-name:Inter,sans-serif]">Happy Clients</span>
-          </div>
-          <div className="flex flex-col items-center justify-center p-4 text-center border-r border-stone-100">
-            <span className="text-indigo-600 font-black text-3xl md:text-5xl mb-2 font-[family-name:Inter,sans-serif]">8+</span>
-            <span className="text-[9px] font-extrabold tracking-widest uppercase text-stone-500 font-[family-name:Inter,sans-serif]">Cities Served</span>
-          </div>
-          <div className="flex flex-col items-center justify-center p-4 text-center">
-            <span className="text-indigo-600 font-black text-3xl md:text-5xl mb-2 font-[family-name:Inter,sans-serif]">98%</span>
-            <span className="text-[9px] font-extrabold tracking-widest uppercase text-stone-500 font-[family-name:Inter,sans-serif]">Satisfaction Rate</span>
-          </div>
-        </div>
-
       </div>
     </section>
   );

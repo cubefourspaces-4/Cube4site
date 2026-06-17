@@ -1,175 +1,187 @@
-import { ChevronRight, ArrowLeft, ArrowRight, Eye, Heart } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ChevronRight, ArrowLeft, ArrowRight, Eye, Heart } from "lucide-react";
+import { useState } from "react";
 
 // Import local images from assets
-import project1 from '../../assests/gallery/gallery1.webp';
-import project2 from '../../assests/gallery/gallery1.webp';
-import project3 from '../../assests/gallery/gallery1.webp';
-import project4 from '../../assests/gallery/gallery1.webp';
-import project5 from '../../assests/gallery/gallery1.webp';
-import project6 from '../../assests/gallery/gallery1.webp';
-import project7 from '../../assests/gallery/gallery1.webp';
-import project8 from '../../assests/gallery/gallery1.webp';
-import project9 from '../../assests/gallery/gallery1.webp';
-import project10 from '../../assests/gallery/gallery1.webp';
+import project1 from "../../assests/gallery/gallery1.webp";
+import project2 from "../../assests/gallery/gallery1.webp";
+import project3 from "../../assests/gallery/gallery1.webp";
+import project4 from "../../assests/gallery/gallery1.webp";
+import project5 from "../../assests/gallery/gallery1.webp";
+import project6 from "../../assests/gallery/gallery1.webp";
+import project7 from "../../assests/gallery/gallery1.webp";
+import project8 from "../../assests/gallery/gallery1.webp";
+import project9 from "../../assests/gallery/gallery1.webp";
+import project10 from "../../assests/gallery/gallery1.webp";
 
 const projects = [
   {
-    title: 'Modern 3BHK Apartment – Whitefield, Bangalore',
-    category: 'Residential',
-    description: 'A complete interior design project featuring a modular kitchen, floor-to-ceiling wardrobes, and warm lighting. The family wanted a clutter-free, modern look — we delivered smart storage solutions without compromising on style.',
-    timeline: 'Completed in 6 weeks',
-    img: project1, // Local image
+    title: "Modern Apartment Interior",
+    category: "Residential",
+    description:
+      "A clean home interior with smart storage, modular kitchen, wardrobes, and warm lighting.",
+    timeline: "6 Weeks",
+    img: project1,
     likes: 342,
-    views: 890
+    views: 890,
   },
   {
-    title: 'Modern Office Interior – Coworking Space, Hyderabad',
-    category: 'Commercial',
-    description: 'A 2,500 sq. ft coworking office requiring open work zones, private cabins, and breakout areas. We handled everything from layout planning and furniture to acoustics and branding elements.',
-    timeline: 'Completed in 8 weeks',
-    img: project2, // Local image
+    title: "Office Interior Design",
+    category: "Commercial",
+    description:
+      "A practical office layout with workstations, cabins, meeting areas, and brand-focused finishes.",
+    timeline: "8 Weeks",
+    img: project2,
     likes: 280,
-    views: 741
+    views: 741,
   },
   {
-    title: 'Complete Home Turnkey – 2BHK Villa, Pune',
-    category: 'Turnkey',
-    description: 'From ground-up construction to fully furnished interiors — this was a full turnkey project. We managed civil work, flooring, plumbing, electricals, modular kitchen, wardrobes, furniture, and decor.',
-    timeline: 'Completed in 5 months',
-    img: project3, // Local image
+    title: "Complete Home Turnkey",
+    category: "Turnkey",
+    description:
+      "A full design-to-handover project covering civil work, interiors, furniture, and final setup.",
+    timeline: "5 Months",
+    img: project3,
     likes: 412,
-    views: 1250
+    views: 1250,
   },
   {
-    title: 'Smart 1BHK Transformation – Mumbai',
-    category: 'Residential',
-    description: 'A compact 550 sq. ft apartment needed maximum storage without feeling crowded. We designed multi-functional furniture, wall-mounted units, and a space-saving modular kitchen.',
-    timeline: 'Completed in 5 weeks',
-    img: project4, // Local image
+    title: "Compact Home Makeover",
+    category: "Residential",
+    description:
+      "A space-saving home design with multifunctional furniture and optimized storage.",
+    timeline: "5 Weeks",
+    img: project4,
     likes: 198,
-    views: 520
+    views: 520,
   },
   {
-    title: 'Boutique Store Interior – Chennai',
-    category: 'Commercial',
-    description: "A women's clothing boutique needing an elegant, Instagram-worthy interior. We designed display racks, a trial room, a billing counter, and a small seating area.",
-    timeline: 'Completed in 4 weeks',
-    img: project5, // Local image
+    title: "Boutique Store Interior",
+    category: "Commercial",
+    description:
+      "A stylish retail space with display areas, trial rooms, billing counter, and customer seating.",
+    timeline: "4 Weeks",
+    img: project5,
     likes: 154,
-    views: 410
+    views: 410,
   },
   {
-    title: 'Startup Office Turnkey – Gurugram',
-    category: 'Turnkey',
-    description: 'A 1,200 sq. ft office requiring minor construction changes + full interiors. We handled partition walls, flooring, false ceilings, workstations, cabins, pantry, and branding.',
-    timeline: 'Completed in 6 weeks',
-    img: project6, // Local image
+    title: "Startup Office Turnkey",
+    category: "Turnkey",
+    description:
+      "A complete office setup with partitions, flooring, ceiling, pantry, workstations, and branding.",
+    timeline: "6 Weeks",
+    img: project6,
     likes: 305,
-    views: 920
+    views: 920,
   },
   {
-    title: 'Luxury Penthouse Design – Bangalore',
-    category: 'Residential',
-    description: 'A spacious, luxurious penthouse featuring high-end Italian marble flooring, designer false ceilings, and a smart home automation system.',
-    timeline: 'Completed in 12 weeks',
-    img: project7, // Local image
+    title: "Luxury Penthouse Design",
+    category: "Residential",
+    description:
+      "A premium home interior with refined finishes, elegant lighting, and luxury material selection.",
+    timeline: "12 Weeks",
+    img: project7,
     likes: 512,
-    views: 1950
+    views: 1950,
   },
   {
-    title: 'Minimalist Cafe Interior – Pune',
-    category: 'Commercial',
-    description: 'A cozy minimalist cafe with warm wooden textures and pendant lighting, designed to provide customers with an inviting and cozy atmosphere.',
-    timeline: 'Completed in 7 weeks',
-    img: project8, // Local image
+    title: "Minimal Cafe Interior",
+    category: "Commercial",
+    description:
+      "A warm cafe design with wooden textures, soft lighting, and customer-friendly seating.",
+    timeline: "7 Weeks",
+    img: project8,
     likes: 318,
-    views: 899
+    views: 899,
   },
   {
-    title: 'Cozy Guest House Renovation – Goa',
-    category: 'Turnkey',
-    description: 'A complete renovation of a coastal guest house, converting old, traditional rooms into bright, breezy seaside retreats.',
-    timeline: 'Completed in 4 months',
-    img: project9, // Local image
+    title: "Guest House Renovation",
+    category: "Turnkey",
+    description:
+      "A complete renovation project designed to create bright, comfortable, and welcoming rooms.",
+    timeline: "4 Months",
+    img: project9,
     likes: 489,
-    views: 1420
+    views: 1420,
   },
   {
-    title: 'Contemporary Art Studio – Delhi',
-    category: 'Commercial',
-    description: 'A modern, open-space art studio with high ceilings, crisp white walls, and industrial track lighting designed to inspire creativity.',
-    timeline: 'Completed in 5 weeks',
-    img: project10, // Local image
+    title: "Creative Studio Interior",
+    category: "Commercial",
+    description:
+      "An open studio space with clean walls, flexible layouts, and focused lighting.",
+    timeline: "5 Weeks",
+    img: project10,
     likes: 245,
-    views: 675
-  }
+    views: 675,
+  },
 ];
 
 export default function Work() {
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState("All");
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const handleMouseMove = (e) => setCursorPos({ x: e.clientX, y: e.clientY });
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  const headingFont =
+    "font-[family-name:Sora,Plus_Jakarta_Sans,Inter,sans-serif] font-extrabold tracking-[-0.055em]";
 
-  const filteredProjects = activeCategory === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
+  const filteredProjects =
+    activeCategory === "All"
+      ? projects
+      : projects.filter((project) => project.category === activeCategory);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === filteredProjects.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) =>
+      prev === filteredProjects.length - 1 ? 0 : prev + 1
+    );
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? filteredProjects.length - 1 : prev - 1));
+    setCurrentIndex((prev) =>
+      prev === 0 ? filteredProjects.length - 1 : prev - 1
+    );
   };
 
   return (
-    <section id="work" className="relative py-32 md:py-40 bg-white overflow-hidden font-sans text-stone-700 min-h-screen flex justify-center">
-      {/* Subtle Ambient Background Glows */}
-      <div
-        className="absolute w-96 h-96 bg-indigo-100 rounded-full blur-[120px] pointer-events-none transition-transform duration-500"
-        style={{ transform: `translate(${cursorPos.x * 0.015}px, ${cursorPos.y * 0.015}px)` }}
-      />
-      <div
-        className="absolute w-80 h-80 bg-sky-100 rounded-full blur-[120px] pointer-events-none transition-transform duration-500"
-        style={{ transform: `translate(${cursorPos.x * -0.015}px, ${cursorPos.y * -0.015}px)` }}
-      />
-
-      <div className="relative z-10 max-w-[1700px] mx-auto px-6 sm:px-8 lg:px-12 w-full">
-        
+    <section
+      id="work"
+      className="relative min-h-screen overflow-hidden bg-[#f4f7fb] py-20 text-stone-950 md:py-28"
+    >
+      <div className="relative z-10 mx-auto w-full max-w-[1700px] px-5 sm:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
-        <div className="text-center mb-20 md:mb-28 max-w-5xl mx-auto">
-          <div className="inline-block px-5 py-2 mb-8 bg-indigo-50 border border-indigo-100 rounded-full">
-            <span className="text-[10px] font-black tracking-[0.25em] uppercase text-indigo-600">
-              Our Methodology & Works
+        <div className="mx-auto mb-16 max-w-5xl text-center md:mb-20">
+          <div className="mb-6 inline-flex rounded-full border border-blue-100 bg-white px-5 py-2 shadow-sm">
+            <span className="text-xs font-black uppercase tracking-[0.22em] text-blue-700">
+              Selected Works
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-stone-950 mb-6 font-[family-name:Inter,sans-serif] leading-tight">
-            Modern Spaces & <span className="font-serif italic font-normal text-indigo-600">Precise Execution.</span>
+
+          <h2
+            className={`mx-auto max-w-5xl text-5xl leading-[0.98] text-stone-950 sm:text-6xl md:text-7xl lg:text-8xl ${headingFont}`}
+          >
+            Designed Spaces.
+            <br />
+            <span className="text-blue-500">Delivered Well.</span>
           </h2>
-          <p className="text-xs md:text-sm text-stone-600 max-w-2xl mx-auto leading-relaxed font-[family-name:Inter,sans-serif]">
-            Browse our curated, high-impact projects designed and built to stand the test of time. 
-            From luxury residences to functional commercial hubs, each design system is tailored to your vision.
+
+          <p className="mx-auto mt-7 max-w-2xl text-base font-medium leading-8 text-stone-600 md:text-lg">
+            Explore our residential, commercial, and turnkey projects designed
+            with practical planning, quality materials, and professional
+            execution.
           </p>
         </div>
 
         {/* Filter Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-20">
-          {['All', 'Residential', 'Commercial', 'Turnkey'].map((cat) => (
+        <div className="mb-16 flex flex-wrap justify-center gap-3">
+          {["All", "Residential", "Commercial", "Turnkey"].map((cat) => (
             <button
               key={cat}
-              onClick={() => { setActiveCategory(cat); setCurrentIndex(0); }}
-              className={`px-8 py-3.5 text-[10px] font-extrabold tracking-[0.2em] uppercase rounded-full transition-all duration-500 border font-[family-name:Inter,sans-serif]
-              ${
+              onClick={() => {
+                setActiveCategory(cat);
+                setCurrentIndex(0);
+              }}
+              className={`rounded-full border px-7 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors ${
                 activeCategory === cat
-                  ? 'bg-stone-950 text-white border-stone-950 shadow-2xl'
-                  : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400 hover:text-stone-950'
+                  ? "border-blue-700 bg-blue-700 text-white"
+                  : "border-blue-100 bg-white text-stone-600 hover:border-blue-300 hover:text-blue-700"
               }`}
             >
               {cat}
@@ -177,136 +189,189 @@ export default function Work() {
           ))}
         </div>
 
-        {/* UI Gallery Feature Container */}
-        <div className="relative flex flex-col items-center w-full max-w-7xl mx-auto mb-16 px-4">
-          
-          {/* Header Action For Gallery Slider */}
-          <div className="flex items-center justify-between w-full mb-12">
-            <span className="text-[10px] font-black tracking-[0.25em] uppercase text-indigo-600 font-[family-name:Inter,sans-serif]">
-              Selected Projects
-            </span>
-            <div className="flex items-center gap-4">
-              <button 
+        {/* Gallery Feature Container */}
+        <div className="relative mx-auto mb-16 flex w-full max-w-7xl flex-col items-center rounded-[3rem] border border-blue-100 bg-white p-5 shadow-sm sm:p-8 md:p-10">
+          {/* Slider Header */}
+          <div className="mb-10 flex w-full items-center justify-between gap-5">
+            <div>
+              <span className="text-xs font-black uppercase tracking-[0.22em] text-blue-700">
+                Project Showcase
+              </span>
+
+              <h3
+                className={`mt-3 text-3xl leading-tight text-stone-950 md:text-5xl ${headingFont}`}
+              >
+                Recent project work
+              </h3>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
                 onClick={prevSlide}
-                className="flex items-center justify-center w-11 h-11 rounded-full border border-stone-200 text-stone-600 hover:bg-stone-100 hover:text-stone-950 transition-all duration-300"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-blue-100 bg-white text-stone-700 transition-colors hover:bg-blue-50 hover:text-blue-700"
+                aria-label="Previous project"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="h-4 w-4" />
               </button>
-              <button 
+
+              <button
                 onClick={nextSlide}
-                className="flex items-center justify-center w-11 h-11 rounded-full bg-stone-950 text-white hover:bg-stone-800 transition-all duration-300 shadow-md"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-stone-950 text-white transition-colors hover:bg-blue-700"
+                aria-label="Next project"
               >
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-4 w-4" />
               </button>
             </div>
           </div>
 
           {/* Main Gallery Display */}
-          <div className="relative flex items-center justify-center gap-8 w-full min-h-[560px] sm:min-h-[620px] py-6 overflow-hidden">
+          <div className="relative flex min-h-[560px] w-full items-center justify-center overflow-hidden py-6 sm:min-h-[620px]">
             {filteredProjects.map((project, index) => {
               const isActive = index === currentIndex;
-              const isPrev = index === (currentIndex - 1 + filteredProjects.length) % filteredProjects.length;
-              const isNext = index === (currentIndex + 1) % filteredProjects.length;
-              
-              let positionClass = "opacity-0 scale-90 translate-x-32 invisible";
+              const isPrev =
+                index ===
+                (currentIndex - 1 + filteredProjects.length) %
+                  filteredProjects.length;
+              const isNext =
+                index === (currentIndex + 1) % filteredProjects.length;
+
+              let positionClass =
+                "pointer-events-none invisible translate-x-24 scale-95 opacity-0";
+
               if (isActive) {
-                positionClass = "opacity-100 scale-100 z-30 translate-x-0 ring-4 ring-indigo-50 shadow-[0_30px_60px_rgba(0,0,0,0.1)]";
+                positionClass =
+                  "z-30 translate-x-0 scale-100 opacity-100 shadow-xl";
               } else if (isPrev) {
-                positionClass = "opacity-20 scale-75 -translate-x-40 md:-translate-x-64 z-10 blur-xs max-md:hidden";
+                positionClass =
+                  "z-10 -translate-x-44 scale-90 opacity-20 max-md:hidden";
               } else if (isNext) {
-                positionClass = "opacity-20 scale-75 translate-x-40 md:translate-x-64 z-10 blur-xs max-md:hidden";
+                positionClass =
+                  "z-10 translate-x-44 scale-90 opacity-20 max-md:hidden";
               }
 
               return (
-                <div 
-                  key={index}
-                  className={`absolute w-full max-w-[280px] sm:max-w-[340px] md:max-w-[400px] aspect-[4/5] bg-white border border-stone-100 backdrop-blur-sm rounded-[2.5rem] transition-all duration-700 ease-in-out p-8 flex flex-col justify-between ${positionClass}`}
+                <article
+                  key={`${project.title}-${index}`}
+                  className={`absolute flex aspect-[4/5] w-full max-w-[300px] flex-col justify-between rounded-[2.25rem] border border-blue-100 bg-white p-5 transition-[opacity,transform] duration-500 ease-out sm:max-w-[360px] md:max-w-[420px] ${positionClass}`}
                 >
-                  {/* Card Image Section */}
-                  <div className="relative w-full h-[45%] rounded-[1.5rem] overflow-hidden shadow-sm border border-stone-100">
-                    <img 
-                      src={project.img} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover"
+                  {/* Card Image */}
+                  <div className="relative h-[48%] overflow-hidden rounded-[1.6rem] border border-stone-100">
+                    <img
+                      src={project.img}
+                      alt={project.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/40 to-transparent" />
-                    
-                    {/* Metrics Floating Container */}
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/55 to-transparent" />
+
                     <div className="absolute bottom-4 left-5 flex items-center gap-5 text-white">
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold">
-                        <Eye className="w-3.5 h-3.5 text-indigo-300" /> {project.views}
+                      <div className="flex items-center gap-1.5 text-xs font-bold">
+                        <Eye className="h-4 w-4 text-blue-300" />
+                        {project.views}
                       </div>
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold">
-                        <Heart className="w-3.5 h-3.5 text-rose-300" /> {project.likes}
+
+                      <div className="flex items-center gap-1.5 text-xs font-bold">
+                        <Heart className="h-4 w-4 text-rose-300" />
+                        {project.likes}
                       </div>
                     </div>
                   </div>
 
-                  {/* Card Content Text Area */}
-                  <div className="flex flex-col h-[45%] justify-between mt-8">
+                  {/* Card Content */}
+                  <div className="mt-6 flex h-[44%] flex-col justify-between">
                     <div>
-                      <span className="text-[9px] font-black tracking-[0.2em] text-indigo-600 uppercase mb-3 block font-[family-name:Inter,sans-serif]">
+                      <span className="mb-3 block text-xs font-black uppercase tracking-[0.18em] text-blue-700">
                         {project.category}
                       </span>
-                      <h3 className="text-lg font-extrabold text-stone-950 mb-3 leading-snug line-clamp-2 font-[family-name:Inter,sans-serif]">
+
+                      <h3
+                        className={`line-clamp-2 text-2xl leading-tight text-stone-950 md:text-3xl ${headingFont}`}
+                      >
                         {project.title}
                       </h3>
-                      <p className="text-[11px] text-stone-600 leading-relaxed line-clamp-3 font-[family-name:Inter,sans-serif]">
+
+                      <p className="mt-4 line-clamp-3 text-sm font-medium leading-6 text-stone-600">
                         {project.description}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between pt-5 border-t border-stone-100">
-                      <span className="text-[9px] font-bold tracking-widest text-stone-500 bg-stone-50 px-3.5 py-1.5 rounded-full font-[family-name:Inter,sans-serif]">
+                    <div className="flex items-center justify-between border-t border-blue-50 pt-5">
+                      <span className="rounded-full bg-blue-50 px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-blue-700">
                         {project.timeline}
                       </span>
-                      <button 
-                        onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
-                        className="text-[10px] font-black text-indigo-600 flex items-center hover:text-indigo-500 transition-colors font-[family-name:Inter,sans-serif]"
+
+                      <button
+                        onClick={() =>
+                          document
+                            .getElementById("contact")
+                            ?.scrollIntoView({ behavior: "smooth" })
+                        }
+                        className="flex items-center text-xs font-black uppercase tracking-[0.12em] text-blue-700 transition-colors hover:text-blue-500"
                       >
-                        Details <ChevronRight className="ml-1 w-3.5 h-3.5" />
+                        Details
+                        <ChevronRight className="ml-1 h-4 w-4" />
                       </button>
                     </div>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl mx-auto mt-32 bg-stone-50 backdrop-blur-sm border border-stone-100 rounded-[2.5rem] p-12 md:p-14">
-          <div className="flex flex-col items-center justify-center p-4 text-center border-r border-stone-100">
-            <span className="text-indigo-600 font-black text-3xl md:text-5xl mb-2 font-[family-name:Inter,sans-serif]">50+</span>
-            <span className="text-[9px] font-extrabold tracking-widest uppercase text-stone-500 font-[family-name:Inter,sans-serif]">Projects Completed</span>
-          </div>
-          <div className="flex flex-col items-center justify-center p-4 text-center lg:border-r border-stone-100">
-            <span className="text-indigo-600 font-black text-3xl md:text-5xl mb-2 font-[family-name:Inter,sans-serif]">45+</span>
-            <span className="text-[9px] font-extrabold tracking-widest uppercase text-stone-500 font-[family-name:Inter,sans-serif]">Happy Clients</span>
-          </div>
-          <div className="flex flex-col items-center justify-center p-4 text-center border-r border-stone-100">
-            <span className="text-indigo-600 font-black text-3xl md:text-5xl mb-2 font-[family-name:Inter,sans-serif]">8+</span>
-            <span className="text-[9px] font-extrabold tracking-widest uppercase text-stone-500 font-[family-name:Inter,sans-serif]">Cities Served</span>
-          </div>
-          <div className="flex flex-col items-center justify-center p-4 text-center">
-            <span className="text-indigo-600 font-black text-3xl md:text-5xl mb-2 font-[family-name:Inter,sans-serif]">98%</span>
-            <span className="text-[9px] font-extrabold tracking-widest uppercase text-stone-500 font-[family-name:Inter,sans-serif]">On-Time Delivery</span>
-          </div>
+        <div className="mx-auto mt-20 grid w-full max-w-7xl grid-cols-2 gap-4 rounded-[2.5rem] border border-blue-100 bg-white p-6 shadow-sm md:p-10 lg:grid-cols-4">
+          {[
+            { value: "50+", label: "Projects Completed" },
+            { value: "45+", label: "Happy Clients" },
+            { value: "8+", label: "Cities Served" },
+            { value: "98%", label: "On-Time Delivery" },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-[2rem] bg-[#f4f7fb] p-6 text-center"
+            >
+              <span
+                className={`block text-4xl leading-none text-blue-700 md:text-5xl ${headingFont}`}
+              >
+                {stat.value}
+              </span>
+
+              <span className="mt-3 block text-xs font-black uppercase tracking-[0.16em] text-stone-500">
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
 
         {/* Action Call Section */}
-        <div className="text-center mt-32 border-t border-stone-100 pt-20 max-w-3xl mx-auto">
-          <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-stone-950 mb-5 font-[family-name:Inter,sans-serif]">
+        <div className="mx-auto mt-20 max-w-4xl overflow-hidden rounded-[3rem] bg-blue-950 p-8 text-center text-white shadow-sm md:p-14">
+          <span className="text-xs font-black uppercase tracking-[0.22em] text-blue-300">
+            Start Your Project
+          </span>
+
+          <h3
+            className={`mx-auto mt-4 max-w-3xl text-4xl leading-tight text-white md:text-6xl ${headingFont}`}
+          >
             Have a project in mind?
           </h3>
-          <p className="text-xs md:text-sm text-stone-600 leading-relaxed mb-10 font-[family-name:Inter,sans-serif]">
-            See something you like — or want something completely different? Share your ideas with us. We'll give you a free consultation and a transparent quote.
+
+          <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-8 text-white/65 md:text-lg">
+            Share your requirement with us. We will guide you with the right
+            design, timeline, and transparent project estimate.
           </p>
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} 
-            className="group px-10 py-4 bg-stone-950 text-white font-black text-xs uppercase tracking-wider rounded-full shadow-2xl active:scale-95 transition-all duration-300 hover:bg-stone-800 font-[family-name:Inter,sans-serif]"
+
+          <button
+            onClick={() =>
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="mt-9 rounded-full bg-white px-9 py-4 text-sm font-black uppercase tracking-[0.12em] text-blue-950 shadow-lg transition-colors hover:bg-blue-500 hover:text-white"
           >
-            Request a Free Quote
+            Request a Quote
           </button>
         </div>
       </div>

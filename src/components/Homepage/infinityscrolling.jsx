@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 const scrollItems = [
   "Luxury Interiors",
@@ -15,39 +15,41 @@ const scrollItems = [
   "Modular Kitchens",
 ];
 
-export default function InfiniteScroll() {
+const activeItems = new Set(["Wardrobes", "Living Spaces", "Turnkey Design"]);
+
+function InfiniteScroll() {
+  const duplicatedItems = useMemo(
+    () => [...scrollItems, ...scrollItems],
+    []
+  );
+
   return (
     <section className="w-full overflow-hidden bg-[#f5f5f3] py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 md:px-10">
         {/* Left Static Brand Content */}
-        <div className="flex flex-col items-center justify-center md:items-start md:justify-center">
+        <div className="flex flex-col items-center justify-center md:items-start">
           <span className="mb-4 text-[11px] font-bold uppercase tracking-[0.35em] text-stone-400">
             Interior Design Studio
           </span>
 
-          <h2 className="text-center text-5xl font-semibold tracking-tight text-stone-900 md:text-left md:text-7xl">
+          <h2 className="text-center text-5xl font-semibold tracking-tight text-stone-900 md:text-left md:text-5xl">
             Cube4Spaces
           </h2>
 
-          <p className="mt-5 max-w-md text-center text-sm leading-relaxed text-stone-500 md:text-left">
+          <p className="mt-5 max-w-md text-center text-sm leading-7 text-stone-500 md:text-left md:text-base">
             Smart interior solutions for modern living with premium finishes,
             custom execution, and timeless spatial design.
           </p>
         </div>
 
         {/* Right Infinite Vertical Scroll */}
-        <div className="relative h-[320px] overflow-hidden">
-          <div className="absolute left-0 right-0 top-0 z-10 h-20 bg-gradient-to-b from-[#f5f5f3] to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 z-10 h-20 bg-gradient-to-t from-[#f5f5f3] to-transparent" />
-
-          <div className="animate-vertical-scroll flex flex-col">
-            {[...scrollItems, ...scrollItems].map((item, index) => (
+        <div className="vertical-scroll-mask relative h-[320px] overflow-hidden">
+          <div className="vertical-scroll-track">
+            {duplicatedItems.map((item, index) => (
               <div
-                key={index}
-                className={`py-1 text-4xl font-medium leading-tight tracking-tight md:text-5xl ${
-                  item === "Wardrobes" ||
-                  item === "Living Spaces" ||
-                  item === "Turnkey Design"
+                key={`${item}-${index}`}
+                className={`vertical-scroll-item ${
+                  activeItems.has(item)
                     ? "text-stone-800"
                     : "text-stone-300"
                 }`}
@@ -61,20 +63,68 @@ export default function InfiniteScroll() {
 
       <style>
         {`
-          @keyframes verticalScroll {
+          .vertical-scroll-mask {
+            contain: layout paint style;
+            mask-image: linear-gradient(
+              to bottom,
+              transparent 0%,
+              black 18%,
+              black 82%,
+              transparent 100%
+            );
+            -webkit-mask-image: linear-gradient(
+              to bottom,
+              transparent 0%,
+              black 18%,
+              black 82%,
+              transparent 100%
+            );
+          }
+
+          .vertical-scroll-track {
+            display: flex;
+            flex-direction: column;
+            animation: cubeVerticalScroll 22s linear infinite;
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            contain: layout paint style;
+          }
+
+          .vertical-scroll-item {
+            padding: 0.15rem 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            white-space: nowrap;
+            backface-visibility: hidden;
+            transform: translate3d(0, 0, 0);
+          }
+
+          @keyframes cubeVerticalScroll {
             0% {
-              transform: translateY(0%);
+              transform: translate3d(0, 0, 0);
             }
             100% {
-              transform: translateY(-50%);
+              transform: translate3d(0, -50%, 0);
             }
           }
 
-          .animate-vertical-scroll {
-            animation: verticalScroll 14s linear infinite;
+          .vertical-scroll-mask:hover .vertical-scroll-track {
+            animation-play-state: paused;
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .vertical-scroll-track {
+              animation: none;
+              transform: none;
+            }
           }
         `}
       </style>
     </section>
   );
 }
+
+export default React.memo(InfiniteScroll);

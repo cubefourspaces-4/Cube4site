@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NFEXT5X1L9"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-NFEXT5X1L9');
-    </script>
-
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0c0a09" />
 
-    <title>Cube4Spaces | Interior Design, Construction & Solutions</title>
+    <!-- Core viewport / browser settings -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Favicons / App -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Primary SEO -->
+    <title>Cube4Spaces | Interior Design, Construction & Turnkey Solutions</title>
     <meta
       name="title"
-      content="Cube4Spaces | Interior Design, Construction & Solutions"
+      content="Cube4Spaces | Interior Design, Construction & Turnkey Solutions"
     />
     <meta
       name="description"
@@ -26,6 +25,7 @@
     />
     <link rel="canonical" href="https://www.cube4spaces.com/" />
 
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.cube4spaces.com/" />
     <meta
@@ -36,55 +36,279 @@
       property="og:description"
       content="Premium interior design and turnkey construction solutions by Cube4Spaces. Smart layouts, refined finishes, and timeless execution."
     />
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:image" content="https://www.cube4spaces.com/og-image.png" />
 
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.cube4spaces.com/" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.cube4spaces.com/" />
     <meta
-      property="twitter:title"
+      name="twitter:title"
       content="Cube4Spaces | Interior Design, Construction & Turnkey Solutions"
     />
     <meta
-      property="twitter:description"
+      name="twitter:description"
       content="Cube4Spaces creates premium interiors, modular kitchens, wardrobes, and turnkey spaces designed for modern living."
     />
-    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta
+      name="twitter:image"
+      content="https://www.cube4spaces.com/og-image.png"
+    />
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Cube4Spaces",
-        "url": "https://www.cube4spaces.com",
-        "logo": "%PUBLIC_URL%/logo192.png",
-        "sameAs": [
-          "https://www.instagram.com/cube4spaces",
-          "https://www.facebook.com/cube4spaces",
-          "https://www.linkedin.com/company/cube4spaces"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+91-9876543210",
-          "contactType": "Customer Service",
-          "email": "hello@cube4spaces.com"
-        }
-      }
-    </script>
+    <!-- Performance: DNS + preconnect -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts: load only what your UI uses -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
       rel="stylesheet"
     />
 
-    <noscript>You need to enable JavaScript to run Cube4Spaces.</noscript>
+    <!-- ============================================================ -->
+    <!-- ENHANCED SEO + AEO + SCHEMA MARKUP (Structured Data)          -->
+    <!-- ============================================================ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.cube4spaces.com/#organization",
+            "name": "Cube4Spaces",
+            "url": "https://www.cube4spaces.com",
+            "logo": "https://www.cube4spaces.com/logo192.png",
+            "sameAs": [
+              "https://www.instagram.com/cube4spaces",
+              "https://www.facebook.com/cube4spaces",
+              "https://www.linkedin.com/company/cube4spaces"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-9876543210",
+              "contactType": "Customer Service",
+              "email": "hello@cube4spaces.com",
+              "areaServed": "IN",
+              "availableLanguage": ["English", "Tamil", "Hindi"]
+            },
+            "description": "Cube4Spaces delivers premium interior design, turnkey construction, modular kitchens, wardrobes, and custom space solutions crafted for modern living."
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.cube4spaces.com/#website",
+            "url": "https://www.cube4spaces.com",
+            "name": "Cube4Spaces - Interior Design & Turnkey Solutions",
+            "description": "Premium interior design and turnkey construction solutions by Cube4Spaces. Smart layouts, refined finishes, and timeless execution.",
+            "publisher": {
+              "@id": "https://www.cube4spaces.com/#organization"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://www.cube4spaces.com/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://www.cube4spaces.com/#localbusiness",
+            "parentOrganization": {
+              "@id": "https://www.cube4spaces.com/#organization"
+            },
+            "name": "Cube4Spaces",
+            "image": "https://www.cube4spaces.com/og-image.png",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "123, Design District, Anna Salai",
+              "addressLocality": "Chennai",
+              "addressRegion": "Tamil Nadu",
+              "postalCode": "600002",
+              "addressCountry": "IN"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "13.0827",
+              "longitude": "80.2707"
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "09:00",
+              "closes": "19:00"
+            },
+            "telephone": "+91-9876543210",
+            "priceRange": "₹₹₹₹",
+            "servesCuisine": "Interior Design, Modular Kitchens, Wardrobes",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Interior Design & Construction Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Modular Kitchen Design",
+                    "description": "Custom modular kitchens with premium finishes, smart storage, and modern aesthetics."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Wardrobe Solutions",
+                    "description": "Walk-in wardrobes, custom closets, and storage systems tailored to your space."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Turnkey Construction",
+                    "description": "Complete turnkey solutions from design to handover for residential and commercial projects."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Interior Design Consultation",
+                    "description": "Expert interior design consultation for homes, offices, and retail spaces."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://www.cube4spaces.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What services does Cube4Spaces offer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cube4Spaces provides premium interior design, modular kitchens, custom wardrobes, turnkey construction, and complete space solutions for residential and commercial projects."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Cube4Spaces do modular kitchens?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Cube4Spaces specializes in custom modular kitchens with modern finishes, ergonomic design, and intelligent storage solutions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the cost of interior design services at Cube4Spaces?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cube4Spaces offers customized pricing based on project scope. On average, interior design packages start from ₹1,50,000 for a 2BHK and go up based on luxury elements and project scale."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Cube4Spaces available in other cities?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Cube4Spaces is primarily based in Chennai but serves clients across Tamil Nadu and major metropolitan cities in India."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can Cube4Spaces handle commercial interior projects?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Cube4Spaces has extensive experience in commercial interiors including office spaces, retail outlets, hospitality projects, and more."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.cube4spaces.com/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.cube4spaces.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Interior Design",
+                "item": "https://www.cube4spaces.com/interior-design"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Modular Kitchens",
+                "item": "https://www.cube4spaces.com/modular-kitchens"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Wardrobes",
+                "item": "https://www.cube4spaces.com/wardrobes"
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "name": "Turnkey Construction",
+                "item": "https://www.cube4spaces.com/turnkey-construction"
+              }
+            ]
+          },
+          {
+            "@type": "AboutPage",
+            "@id": "https://www.cube4spaces.com/#aboutpage",
+            "about": {
+              "@type": "Thing",
+              "name": "Cube4Spaces - Interior Design & Construction",
+              "description": "Cube4Spaces is a premier interior design and turnkey construction firm dedicated to creating spaces that combine functionality with aesthetics. We specialize in modular solutions, custom furniture, and complete project management."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Delayed Google Analytics: improves first-load performance -->
+    <script>
+      window.addEventListener("load", function () {
+        var loadAnalytics = function () {
+          var script = document.createElement("script");
+          script.async = true;
+          script.src =
+            "https://www.googletagmanager.com/gtag/js?id=G-NFEXT5X1L9";
+          document.head.appendChild(script);
+
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+
+          window.gtag = gtag;
+          gtag("js", new Date());
+          gtag("config", "G-NFEXT5X1L9", {
+            send_page_view: true
+          });
+        };
+
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(loadAnalytics, { timeout: 3000 });
+        } else {
+          setTimeout(loadAnalytics, 2500);
+        }
+      });
+    </script>
   </head>
 
   <body>
+    <noscript>You need to enable JavaScript to run Cube4Spaces.</noscript>
     <div id="root"></div>
   </body>
 </html>

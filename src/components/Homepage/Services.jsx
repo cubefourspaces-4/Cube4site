@@ -5,7 +5,6 @@ import {
   DraftingCompass,
   Building2,
   ClipboardCheck,
-  Ruler,
   BadgeCheck,
 } from 'lucide-react';
 
@@ -51,29 +50,6 @@ const services = [
   },
 ];
 
-const process = [
-  {
-    step: '01',
-    title: 'Consult',
-    desc: 'We understand your space, budget, style, and timeline.',
-  },
-  {
-    step: '02',
-    title: 'Plan',
-    desc: 'We prepare layouts, material ideas, and execution roadmap.',
-  },
-  {
-    step: '03',
-    title: 'Build',
-    desc: 'Our team manages construction and interior work with regular updates.',
-  },
-  {
-    step: '04',
-    title: 'Handover',
-    desc: 'We inspect, finish, and deliver your completed space.',
-  },
-];
-
 const benefits = [
   'Transparent project planning',
   'Clear delivery timelines',
@@ -85,39 +61,42 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-[#f8f7f4] py-20 md:py-28 font-[family-name:Inter,sans-serif]"
+      className="relative w-full overflow-hidden bg-slate-50 py-24 md:py-32"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(79,70,229,0.08),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.08),transparent_32%)]" />
+      {/* Background Gradients */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.06),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.06),transparent_40%)]" />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-14 xl:px-20 2xl:px-24">
-        {/* Header */}
-        <div className="mb-16 grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+      {/* Full Width Container with scaling padding */}
+      <div className="relative z-10 w-full px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 2xl:px-40">
+        
+        {/* Header Section */}
+        <div className="mb-24 grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:items-end">
           <div>
-            <span className="mb-5 inline-flex rounded-full border border-stone-200 bg-white px-5 py-2 text-sm font-bold uppercase tracking-[0.18em] text-indigo-700 shadow-sm">
+            <span className="font-['Poppins',sans-serif] mb-8 inline-flex rounded-full border border-indigo-100 bg-indigo-50/50 px-6 py-2.5 text-base font-bold uppercase tracking-[0.2em] text-indigo-700 shadow-sm backdrop-blur-sm">
               Our Services
             </span>
 
-            <h2 className="max-w-5xl text-5xl font-black tracking-[-0.04em] text-stone-950 sm:text-6xl lg:text-7xl xl:text-8xl">
+            <h2 className="font-['Poppins',sans-serif] max-w-6xl text-6xl font-black tracking-tight text-slate-950 sm:text-4xl lg:text-6xl xl:text-[4.5rem] leading-[1.05]">
               Design. Build. Deliver.
             </h2>
 
-            <p className="mt-7 max-w-3xl text-lg font-medium leading-8 text-stone-700 md:text-xl">
+            <p className="font-['Inter',sans-serif] mt-8 max-w-4xl text-xl font-medium leading-relaxed text-slate-600 md:text-2xl">
               Cube4Spaces creates beautiful, functional, and ready-to-use
               spaces with complete interior, construction, and turnkey project
               support.
             </p>
           </div>
 
-          <div className="rounded-[2rem] border border-stone-800 bg-stone-950 p-8 text-white shadow-2xl">
-            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-              <BadgeCheck className="h-7 w-7" />
+          <div className="rounded-[2.5rem] border border-slate-900 bg-slate-950 p-10 text-white shadow-2xl md:p-12">
+            <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md">
+              <BadgeCheck className="h-8 w-8 text-indigo-400" strokeWidth={2} />
             </div>
 
-            <h3 className="text-2xl font-extrabold leading-tight">
+            <h3 className="font-['Poppins',sans-serif] text-3xl font-bold leading-snug md:text-4xl">
               End-to-end project ownership
             </h3>
 
-            <p className="mt-4 text-base leading-7 text-white/75">
+            <p className="font-['Inter',sans-serif] mt-5 text-lg font-normal leading-relaxed text-slate-300 md:text-xl">
               From first consultation to final handover, our team keeps your
               project structured, transparent, and professionally managed.
             </p>
@@ -125,44 +104,46 @@ export default function Services() {
         </div>
 
         {/* Services Cards */}
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service) => {
             const Icon = service.icon;
 
             return (
               <article
                 key={service.id}
-                className="group rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-xl xl:p-10"
+                className="group flex flex-col rounded-[2.5rem] border border-slate-200 bg-white p-10 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:border-indigo-300 hover:shadow-2xl xl:p-12"
               >
-                <div className="mb-8 flex items-center justify-between">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-stone-200 bg-[#f8f7f4] text-stone-950 transition-all duration-300 group-hover:border-indigo-700 group-hover:bg-indigo-700 group-hover:text-white">
-                    <Icon className="h-7 w-7" strokeWidth={1.8} />
+                <div className="mb-10 flex items-center justify-between">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-slate-100 bg-slate-50 text-slate-900 transition-all duration-500 group-hover:scale-110 group-hover:border-indigo-600 group-hover:bg-indigo-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-indigo-600/25">
+                    <Icon className="h-9 w-9" strokeWidth={1.8} />
                   </div>
 
-                  <span className="text-5xl font-black text-stone-200">
+                  <span className="font-['Poppins',sans-serif] text-6xl font-black text-slate-100 transition-colors duration-500 group-hover:text-indigo-50">
                     {service.id}
                   </span>
                 </div>
 
-                <h3 className="text-3xl font-black tracking-tight text-stone-950 xl:text-4xl">
+                <h3 className="font-['Poppins',sans-serif] text-4xl font-bold tracking-tight text-slate-950">
                   {service.title}
                 </h3>
 
-                <p className="mt-5 min-h-[112px] text-lg font-medium leading-8 text-stone-600">
+                <p className="font-['Inter',sans-serif] mt-6 flex-grow text-xl font-medium leading-relaxed text-slate-600">
                   {service.description}
                 </p>
 
-                <ul className="mt-8 space-y-4 border-t border-stone-100 pt-7">
+                <ul className="mt-10 space-y-5 border-t border-slate-100 pt-10">
                   {service.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-start gap-3 text-base font-bold text-stone-800"
+                      className="flex items-start gap-4"
                     >
                       <CheckCircle2
-                        className="mt-0.5 h-5 w-5 flex-shrink-0 text-indigo-700"
-                        strokeWidth={2}
+                        className="mt-0.5 h-6 w-6 flex-shrink-0 text-indigo-600"
+                        strokeWidth={2.5}
                       />
-                      <span>{feature}</span>
+                      <span className="font-['Inter',sans-serif] text-lg font-semibold text-slate-800">
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -171,86 +152,46 @@ export default function Services() {
           })}
         </div>
 
-        {/* Process Section */}
-        <div className="mt-24 grid gap-12 rounded-[2.5rem] border border-stone-200 bg-white p-8 shadow-sm md:p-12 lg:grid-cols-[0.7fr_1.3fr] xl:p-14">
-          <div>
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-indigo-700">
-              How We Work
-            </span>
-
-            <h3 className="mt-5 text-4xl font-black tracking-tight text-stone-950 md:text-5xl xl:text-6xl">
-              A simple process for stress-free execution.
-            </h3>
-
-            <p className="mt-6 text-lg font-medium leading-8 text-stone-600">
-              We keep your project journey clear, practical, and easy to track
-              from planning to delivery.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2">
-            {process.map((item) => (
-              <div
-                key={item.step}
-                className="rounded-3xl border border-stone-200 bg-[#f8f7f4] p-7 transition-all duration-300 hover:border-indigo-200 hover:bg-white hover:shadow-md"
-              >
-                <div className="mb-5 flex items-center justify-between">
-                  <span className="text-sm font-black text-indigo-700">
-                    {item.step}
-                  </span>
-
-                  <Ruler className="h-5 w-5 text-stone-400" strokeWidth={1.8} />
-                </div>
-
-                <h4 className="text-2xl font-black text-stone-950">
-                  {item.title}
-                </h4>
-
-                <p className="mt-3 text-base font-medium leading-7 text-stone-600">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Why Choose Us */}
-        <div className="mt-24 grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+        <div className="mt-32 grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:items-center">
           <div>
-            <span className="text-sm font-black uppercase tracking-[0.18em] text-indigo-700">
+            <span className="font-['Poppins',sans-serif] text-base font-bold uppercase tracking-[0.2em] text-indigo-700">
               Why Choose Cube4Spaces
             </span>
 
-            <h3 className="mt-5 max-w-3xl text-4xl font-black tracking-tight text-stone-950 md:text-5xl xl:text-6xl">
+            <h3 className="font-['Poppins',sans-serif] mt-6 max-w-3xl text-5xl font-black tracking-tight text-slate-950 md:text-6xl xl:text-7xl leading-[1.1]">
               Better planning. Better finish. Better handover.
             </h3>
 
-            <p className="mt-6 max-w-3xl text-lg font-medium leading-8 text-stone-600">
+            <p className="font-['Inter',sans-serif] mt-8 max-w-3xl text-xl font-medium leading-relaxed text-slate-600">
               We combine design thinking, execution discipline, and transparent
               coordination to help you build a space that looks good and works
               well.
             </p>
 
-            <button className="mt-9 inline-flex items-center gap-3 rounded-full bg-stone-950 px-8 py-4 text-base font-black text-white shadow-lg transition hover:bg-indigo-700">
+            <button className="font-['Inter',sans-serif] mt-12 inline-flex items-center gap-4 rounded-full bg-slate-950 px-10 py-5 text-lg font-bold text-white shadow-xl shadow-slate-950/10 transition-all duration-300 hover:bg-indigo-600 hover:shadow-indigo-600/25 hover:-translate-y-1">
               Start Your Project
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-6 w-6" strokeWidth={2.5} />
             </button>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2">
             {benefits.map((benefit) => (
               <div
                 key={benefit}
-                className="flex items-center gap-4 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-indigo-200 hover:shadow-md"
+                className="flex items-center gap-5 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition-all duration-300 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-900/5"
               >
-                <CheckCircle2 className="h-6 w-6 flex-shrink-0 text-indigo-700" />
-                <span className="text-lg font-black leading-snug text-stone-900">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-indigo-50">
+                  <CheckCircle2 className="h-7 w-7 text-indigo-600" strokeWidth={2.5} />
+                </div>
+                <span className="font-['Inter',sans-serif] text-xl font-semibold leading-snug text-slate-900">
                   {benefit}
                 </span>
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );

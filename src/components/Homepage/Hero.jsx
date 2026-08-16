@@ -3,13 +3,16 @@ import {
   ChevronLeft,
   ChevronRight,
   ArrowUpRight,
-  CircleDot,
 } from "lucide-react";
 
 import Image1 from "../../assests/team/herosection/cubehero1.webp";
 import Image2 from "../../assests/team/herosection/cubehero2.webp";
 import Image3 from "../../assests/team/herosection/cubehero3.webp";
 import Image4 from "../../assests/team/herosection/cubehero4.webp";
+
+// =====================================================
+// HERO SLIDES
+// =====================================================
 
 const slides = [
   {
@@ -42,22 +45,49 @@ const slides = [
   },
 ];
 
+// =====================================================
+// HERO
+// =====================================================
+
 export default function Hero() {
   const [current, setCurrent] = useState(0);
 
-  const activeSlide = useMemo(() => slides[current], [current]);
+  const activeSlide = useMemo(
+    () => slides[current],
+    [current]
+  );
+
+  // =====================================================
+  // NEXT SLIDE
+  // =====================================================
 
   const nextSlide = useCallback(() => {
-    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    setCurrent((prev) =>
+      prev === slides.length - 1 ? 0 : prev + 1
+    );
   }, []);
 
+  // =====================================================
+  // PREVIOUS SLIDE
+  // =====================================================
+
   const prevSlide = useCallback(() => {
-    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    setCurrent((prev) =>
+      prev === 0 ? slides.length - 1 : prev - 1
+    );
   }, []);
+
+  // =====================================================
+  // GO TO SLIDE
+  // =====================================================
 
   const goToSlide = useCallback((index) => {
     setCurrent(index);
   }, []);
+
+  // =====================================================
+  // PRELOAD IMAGES
+  // =====================================================
 
   useEffect(() => {
     slides.forEach((slide) => {
@@ -66,17 +96,59 @@ export default function Hero() {
     });
   }, []);
 
+  // =====================================================
+  // AUTO SLIDER
+  // =====================================================
+
   useEffect(() => {
-    const timer = window.setInterval(nextSlide, 6500);
-    return () => window.clearInterval(timer);
+    const timer = window.setInterval(
+      nextSlide,
+      6500
+    );
+
+    return () => {
+      window.clearInterval(timer);
+    };
   }, [nextSlide]);
 
-  const headingFont =
-    "font-[family-name:'Space_Grotesk','Plus_Jakarta_Sans',Inter,sans-serif]";
+  // =====================================================
+  // SCROLL
+  // =====================================================
+
+  const scrollToSection = (id) => {
+    document
+      .getElementById(id)
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
+
+  // =====================================================
+  // RETURN
+  // =====================================================
 
   return (
-    <section className="relative mt-16 min-h-[780px] overflow-hidden bg-slate-950 font-[family-name:Inter,sans-serif] text-white md:min-h-[920px]">
-      {/* Active Background */}
+    <section
+      className="
+        relative
+        mt-16
+        min-h-[820px]
+        overflow-hidden
+        bg-neutral-950
+        text-white
+        md:min-h-[900px]
+        lg:min-h-[920px]
+        xl:min-h-[940px]
+      "
+      style={{
+        fontFamily: "Inter, sans-serif",
+      }}
+    >
+      {/* =====================================================
+          BACKGROUND SLIDES
+      ===================================================== */}
+
       <div className="absolute inset-0">
         {slides.map((slide, index) => {
           const isActive = current === index;
@@ -84,210 +156,528 @@ export default function Hero() {
           return (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-                isActive ? "z-20 opacity-100" : "z-10 opacity-0"
-              }`}
+              className={`
+                absolute
+                inset-0
+                transition-opacity
+                duration-1000
+                ease-in-out
+                transform-gpu
+                will-change-opacity
+                backface-hidden
+                ${
+                  isActive
+                    ? "z-20 opacity-100"
+                    : "z-10 opacity-0 pointer-events-none"
+                }
+              `}
             >
               <img
                 src={slide.img}
-                alt={slide.title.replace("\n", " ")}
-                loading={index === 0 ? "eager" : "lazy"}
-                fetchPriority={index === 0 ? "high" : "auto"}
+                alt={slide.title.replace(
+                  "\n",
+                  " "
+                )}
+                loading={
+                  index === 0
+                    ? "eager"
+                    : "lazy"
+                }
+                fetchPriority={
+                  index === 0
+                    ? "high"
+                    : "auto"
+                }
                 decoding="async"
-                className="h-full w-full object-cover will-change-transform"
+                className="
+                  h-full
+                  w-full
+                  object-cover
+                  object-center
+                  scale-[1.01]
+                  transform-gpu
+                  backface-hidden
+                "
               />
 
-              <div className="absolute inset-0 bg-slate-950/45" />
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/55 to-slate-950/10" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
+              {/* Main Overlay */}
+
+              <div
+                className="
+                  absolute
+                  inset-0
+                  bg-black/35
+                "
+              />
+
+              {/* Left Gradient */}
+
+              <div
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-r
+                  from-black/90
+                  via-black/60
+                  to-black/15
+                "
+              />
+
+              {/* Bottom Gradient */}
+
+              <div
+                className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-t
+                  from-black/90
+                  via-black/25
+                  to-transparent
+                "
+              />
+
+              {/* Top Gradient */}
+
+              <div
+                className="
+                  absolute
+                  inset-x-0
+                  top-0
+                  h-40
+                  bg-gradient-to-b
+                  from-black/40
+                  to-transparent
+                "
+              />
             </div>
           );
         })}
       </div>
 
-      {/* Decorative Blue Glow */}
-      <div className="pointer-events-none absolute left-10 top-20 z-30 h-80 w-80 rounded-full bg-blue-500/20 blur-[130px]" />
-      <div className="pointer-events-none absolute bottom-0 right-0 z-30 h-96 w-96 rounded-full bg-sky-400/10 blur-[150px]" />
+      {/* =====================================================
+          DECORATIVE LIGHT
+      ===================================================== */}
 
-      {/* Main Content */}
-      <div className="relative z-40 mx-auto flex min-h-[720px] w-full max-w-[1700px] items-center px-5 py-20 sm:px-8 md:min-h-[820px] lg:px-12 xl:px-16">
-        <div className="grid w-full grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_420px]">
-          {/* Left Content */}
-          <div className="max-w-4xl">
-            <div className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-5 py-2.5 shadow-sm backdrop-blur-md">
-              <CircleDot className="h-4 w-4 text-blue-300" />
-              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-white/80">
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-[5%]
+          top-[15%]
+          z-30
+          h-[320px]
+          w-[320px]
+          rounded-full
+          bg-white/[0.06]
+          blur-[130px]
+          transform-gpu
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          bottom-[-120px]
+          right-[-80px]
+          z-30
+          h-[450px]
+          w-[450px]
+          rounded-full
+          bg-amber-100/[0.06]
+          blur-[150px]
+          transform-gpu
+        "
+      />
+
+      {/* =====================================================
+          MAIN CONTENT
+      ===================================================== */}
+
+      <div
+        className="
+          relative
+          z-40
+          mx-auto
+          flex
+          min-h-[820px]
+          w-full
+          max-w-[1800px]
+          items-center
+          px-5
+          py-24
+          sm:px-8
+          md:min-h-[900px]
+          md:px-12
+          lg:min-h-[920px]
+          lg:px-16
+          xl:min-h-[940px]
+          xl:px-20
+          2xl:px-24
+        "
+      >
+        <div className="w-full">
+          {/* =================================================
+              LEFT / MAIN CONTENT
+          ================================================= */}
+
+          <div
+            className="
+              max-w-[1000px]
+            "
+          >
+            {/* =================================================
+                SLIDE TAG
+            ================================================= */}
+
+            <div
+              className="
+                mb-8
+                inline-flex
+                items-center
+                gap-3
+                rounded-full
+                border
+                border-white/20
+                bg-white/[0.08]
+                px-5
+                py-3
+                backdrop-blur-xl
+              "
+            >
+              <span
+                className="
+                  h-2
+                  w-2
+                  rounded-full
+                  bg-white
+                  shadow-[0_0_14px_rgba(255,255,255,0.8)]
+                "
+              />
+
+              <span
+                className="
+                  text-[11px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.22em]
+                  text-white/85
+                "
+              >
                 {activeSlide.tag}
               </span>
             </div>
 
+            {/* =================================================
+                MAIN HEADING
+            ================================================= */}
+
             <h1
-              className={`${headingFont} whitespace-pre-line text-4xl font-extrabold leading-[0.98] tracking-[-0.05em] text-white sm:text-5xl md:text-6xl lg:text-7xl`}
+              className="
+                whitespace-pre-line
+                font-[Poppins,sans-serif]
+                text-[48px]
+                font-semibold
+                leading-[1.02]
+                tracking-[-0.045em]
+                text-white
+
+                sm:text-[58px]
+
+                md:text-[70px]
+
+                lg:text-[82px]
+
+                xl:text-[94px]
+
+                2xl:text-[104px]
+              "
             >
               {activeSlide.title}
             </h1>
 
-            <p className="mt-7 max-w-2xl text-sm font-medium leading-7 text-white/75 md:text-base md:leading-8">
+            {/* =================================================
+                ACCENT LINE
+            ================================================= */}
+
+            <div
+              className="
+                mt-8
+                h-[2px]
+                w-20
+                bg-white/80
+              "
+            />
+
+            {/* =================================================
+                DESCRIPTION
+            ================================================= */}
+
+            <p
+              className="
+                mt-8
+                max-w-[680px]
+                text-[16px]
+                font-normal
+                leading-8
+                text-white/75
+
+                sm:text-[17px]
+
+                md:text-[18px]
+                md:leading-9
+              "
+            >
               {activeSlide.desc}
             </p>
 
-            <div className="mt-9 flex flex-wrap items-center gap-4">
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="inline-flex items-center gap-3 rounded-full bg-white px-7 py-4 text-xs font-black uppercase tracking-[0.16em] text-slate-950 shadow-lg transition-all hover:bg-blue-100 active:scale-[0.99]"
-              >
-                Start Project
-                <ArrowUpRight className="h-4 w-4" />
-              </button>
+            {/* =================================================
+                BUTTONS
+            ================================================= */}
+
+            <div
+              className="
+                mt-10
+                flex
+                flex-wrap
+                items-center
+                gap-4
+              "
+            >
+              {/* Start Project */}
 
               <button
                 onClick={() =>
-                  document
-                    .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth" })
+                  scrollToSection("contact")
                 }
-                className="rounded-full border border-white/20 bg-white/10 px-7 py-4 text-xs font-black uppercase tracking-[0.16em] text-white backdrop-blur-md transition-all hover:bg-white/20 active:scale-[0.99]"
+                className="
+                  group
+                  inline-flex
+                  h-[56px]
+                  items-center
+                  gap-4
+                  rounded-full
+                  bg-white
+                  px-7
+                  font-[Poppins,sans-serif]
+                  text-[13px]
+                  font-semibold
+                  tracking-[0.02em]
+                  text-neutral-950
+                  shadow-2xl
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:bg-neutral-100
+                  active:translate-y-0
+                "
+              >
+                <span>
+                  Start a Project
+                </span>
+
+                <span
+                  className="
+                    flex
+                    h-8
+                    w-8
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-neutral-950
+                    text-white
+                    transition-transform
+                    duration-300
+                    group-hover:rotate-45
+                  "
+                >
+                  <ArrowUpRight
+                    className="h-4 w-4"
+                  />
+                </span>
+              </button>
+
+              {/* View Projects */}
+
+              <button
+                onClick={() =>
+                  scrollToSection("projects")
+                }
+                className="
+                  inline-flex
+                  h-[56px]
+                  items-center
+                  rounded-full
+                  border
+                  border-white/25
+                  bg-white/[0.07]
+                  px-7
+                  font-[Poppins,sans-serif]
+                  text-[13px]
+                  font-semibold
+                  text-white
+                  backdrop-blur-xl
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:bg-white/15
+                  active:translate-y-0
+                "
               >
                 View Projects
               </button>
-            </div>
-
-            {/* Trust Metrics */}
-            <div className="mt-14 grid max-w-2xl grid-cols-3 gap-3">
-              {[
-                { value: "200+", label: "Projects" },
-                { value: "3+", label: "Core Services" },
-                { value: "2023", label: "Established" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-[1.25rem] border border-white/10 bg-white/10 px-5 py-4 backdrop-blur-md"
-                >
-                  <p
-                    className={`${headingFont} text-2xl font-extrabold tracking-[-0.04em] text-white`}
-                  >
-                    {item.value}
-                  </p>
-                  <p className="mt-1 text-[10px] font-black uppercase tracking-[0.16em] text-white/45">
-                    {item.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Slider Panel */}
-          <div className="hidden lg:block">
-            <div className="rounded-[2rem] border border-white/12 bg-white/10 p-5 shadow-2xl backdrop-blur-xl">
-              <div className="mb-5 flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-200">
-                    Featured Slide
-                  </span>
-                  <h3
-                    className={`${headingFont} mt-2 text-2xl font-extrabold tracking-[-0.04em] text-white`}
-                  >
-                    {String(current + 1).padStart(2, "0")} /{" "}
-                    {String(slides.length).padStart(2, "0")}
-                  </h3>
-                </div>
-
-                <div className="flex gap-2">
-                  <button
-                    onClick={prevSlide}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20"
-                    aria-label="Previous slide"
-                  >
-                    <ChevronLeft className="h-5 w-5" />
-                  </button>
-
-                  <button
-                    onClick={nextSlide}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20"
-                    aria-label="Next slide"
-                  >
-                    <ChevronRight className="h-5 w-5" />
-                  </button>
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                {slides.map((slide, index) => {
-                  const isActive = current === index;
-
-                  return (
-                    <button
-                      key={slide.id}
-                      onClick={() => goToSlide(index)}
-                      className={`group grid w-full grid-cols-[92px_1fr] items-center gap-4 rounded-[1.25rem] border p-3 text-left transition-all ${
-                        isActive
-                          ? "border-white/40 bg-white/20"
-                          : "border-white/10 bg-white/5 hover:bg-white/10"
-                      }`}
-                    >
-                      <div className="h-20 overflow-hidden rounded-[1rem] bg-white/10">
-                        <img
-                          src={slide.img}
-                          alt={slide.title.replace("\n", " ")}
-                          loading="lazy"
-                          decoding="async"
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-
-                      <div className="min-w-0">
-                        <span className="text-[9px] font-black uppercase tracking-[0.18em] text-blue-200">
-                          {slide.tag}
-                        </span>
-                        <p className="mt-2 line-clamp-2 text-sm font-black leading-5 text-white">
-                          {slide.title.replace("\n", " ")}
-                        </p>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Bottom Controls */}
-      <div className="absolute bottom-6 left-0 right-0 z-50 px-5 sm:px-8 lg:hidden">
-        <div className="mx-auto flex max-w-xl items-center justify-between rounded-full border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-xl">
+      {/* =====================================================
+          MOBILE SLIDER CONTROLS
+      ===================================================== */}
+
+      <div
+        className="
+          absolute
+          bottom-6
+          left-0
+          right-0
+          z-50
+          px-5
+          sm:px-8
+          lg:hidden
+        "
+      >
+        <div
+          className="
+            mx-auto
+            flex
+            max-w-[500px]
+            items-center
+            justify-between
+            rounded-full
+            border
+            border-white/15
+            bg-black/30
+            px-3
+            py-3
+            backdrop-blur-2xl
+          "
+        >
+          {/* Previous */}
+
           <button
             onClick={prevSlide}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white"
+            className="
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-full
+              bg-white/[0.08]
+              text-white
+              transition-all
+              hover:bg-white/15
+              active:scale-95
+            "
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
 
-          <div className="flex items-center gap-2">
+          {/* Indicators */}
+
+          <div
+            className="
+              flex
+              items-center
+              gap-2
+            "
+          >
             {slides.map((slide, index) => (
               <button
                 key={slide.id}
-                onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all ${
-                  current === index ? "w-8 bg-white" : "w-2 bg-white/35"
+                onClick={() =>
+                  goToSlide(index)
+                }
+                className={`
+                  h-1.5
+                  rounded-full
+                  transition-all
+                  duration-300
+                  ${
+                    current === index
+                      ? "w-9 bg-white"
+                      : "w-2 bg-white/30"
+                  }
+                `}
+                aria-label={`Go to slide ${
+                  index + 1
                 }`}
-                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
 
+          {/* Next */}
+
           <button
             onClick={nextSlide}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white"
+            className="
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-full
+              bg-white/[0.08]
+              text-white
+              transition-all
+              hover:bg-white/15
+              active:scale-95
+            "
             aria-label="Next slide"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
         </div>
+      </div>
+
+      {/* =====================================================
+          DESKTOP SCROLL INDICATOR
+      ===================================================== */}
+
+      <div
+        className="
+          absolute
+          bottom-9
+          right-10
+          z-50
+          hidden
+          items-center
+          gap-3
+          xl:flex
+        "
+      >
+        <span
+          className="
+            font-[Poppins,sans-serif]
+            text-[10px]
+            font-medium
+            uppercase
+            tracking-[0.2em]
+            text-white/45
+          "
+        >
+          Scroll to explore
+        </span>
+
+        <div
+          className="
+            h-px
+            w-12
+            bg-white/30
+          "
+        />
       </div>
     </section>
   );

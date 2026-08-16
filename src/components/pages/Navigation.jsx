@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { ChevronDown, ExternalLink, ArrowUpRight } from "lucide-react";
+import { ChevronDown, ExternalLink, ArrowUpRight, Menu, X } from "lucide-react";
 import logo from "../../assests/cubelogo.webp";
 
 export default function Navigation() {
@@ -15,10 +15,8 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -36,53 +34,48 @@ export default function Navigation() {
   ];
 
   const navLinkClass = ({ isActive }) =>
-    `rounded-full px-5 py-2.5 text-[10px] font-black uppercase tracking-[0.16em] transition-all duration-300 ${
+    `font-['Inter',sans-serif] text-base font-medium px-4 py-2.5 rounded-lg transition-all duration-200 ${
       isActive
-        ? "bg-blue-50 text-blue-700"
-        : "text-slate-600 hover:bg-blue-50 hover:text-blue-700"
+        ? "bg-indigo-50 text-indigo-700"
+        : "text-gray-600 hover:bg-gray-50 hover:text-indigo-600"
     }`;
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 w-full bg-white transition-all duration-500 ${
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "border-b border-blue-100/70 shadow-[0_12px_40px_rgba(15,23,42,0.06)]"
-          : "border-b border-transparent"
+          ? "bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm py-3"
+          : "bg-white py-5"
       }`}
     >
-      <nav
-        className={`mx-auto flex w-full max-w-[1700px] items-center justify-between px-5 transition-all duration-500 sm:px-8 lg:px-12 xl:px-16 ${
-          scrolled ? "py-3" : "py-4"
-        }`}
-      >
+      <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
+        
         {/* Logo Section */}
         <Link
           to="/"
-          className="group flex items-center gap-3"
+          className="group flex items-center gap-4"
           onClick={() => setIsOpen(false)}
         >
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-100 bg-white p-1.5 shadow-sm transition-all group-hover:border-blue-300 group-hover:bg-blue-50">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white p-1.5 shadow-sm transition-all group-hover:border-indigo-200 group-hover:shadow-md">
             <img
               src={logo}
               alt="Cube4Spaces Logo"
-              className="h-full w-full rounded-xl object-contain"
+              className="h-full w-full object-contain"
             />
           </div>
 
-          <div className="leading-none">
-            <span className="block font-[family-name:'Space_Grotesk','Plus_Jakarta_Sans',Inter,sans-serif] text-lg font-extrabold tracking-[-0.04em] text-slate-950">
-              CUBE4SPACES
-              <span className="text-blue-700">.</span>
+          <div className="flex flex-col justify-center">
+            <span className="font-['Poppins',sans-serif] text-2xl font-bold tracking-tight text-gray-900">
+              CUBE4SPACES<span className="text-indigo-600">.</span>
             </span>
-
-            <span className="mt-1 hidden text-[9px] font-black uppercase tracking-[0.22em] text-slate-400 sm:block">
+            <span className="font-['Inter',sans-serif] text-sm font-medium text-gray-500">
               Design · Build · Handover
             </span>
           </div>
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden items-center rounded-full border border-blue-100 bg-white px-1.5 py-1.5 shadow-sm md:flex">
+        <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
             <NavLink key={link.name} to={link.path} className={navLinkClass}>
               {link.name}
@@ -98,54 +91,53 @@ export default function Navigation() {
             <button
               type="button"
               onClick={() => setServicesOpen((prev) => !prev)}
-              className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-[10px] font-black uppercase tracking-[0.16em] transition-all duration-300 ${
+              className={`font-['Inter',sans-serif] flex items-center gap-1.5 rounded-lg px-4 py-2.5 text-base font-medium transition-all duration-200 ${
                 servicesOpen
-                  ? "bg-blue-50 text-blue-700"
-                  : "text-slate-600 hover:bg-blue-50 hover:text-blue-700"
+                  ? "bg-indigo-50 text-indigo-700"
+                  : "text-gray-600 hover:bg-gray-50 hover:text-indigo-600"
               }`}
             >
               Services
               <ChevronDown
-                className={`h-3.5 w-3.5 transition-transform duration-300 ${
+                className={`h-4 w-4 transition-transform duration-300 ${
                   servicesOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
             <div
-              className={`absolute right-0 top-[calc(100%+14px)] w-72 origin-top-right rounded-[1.5rem] border border-blue-100 bg-white p-2 shadow-[0_24px_70px_rgba(15,23,42,0.12)] transition-all duration-300 ${
+              className={`absolute left-1/2 top-[calc(100%+8px)] w-72 -translate-x-1/2 origin-top rounded-2xl border border-gray-100 bg-white p-2.5 shadow-xl transition-all duration-300 ${
                 servicesOpen
                   ? "visible translate-y-0 scale-100 opacity-100"
                   : "invisible -translate-y-2 scale-95 opacity-0"
               }`}
             >
-              <div className="px-4 pb-3 pt-3">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-700">
-                  Services
+              <div className="px-3 pb-2 pt-2">
+                <span className="font-['Poppins',sans-serif] text-sm font-semibold text-gray-900">
+                  Our Services
                 </span>
-                <p className="mt-2 text-xs font-medium leading-5 text-slate-500">
+                <p className="font-['Inter',sans-serif] mt-1 text-sm text-gray-500">
                   Integrated design, construction, and turnkey execution.
                 </p>
               </div>
 
-              <div className="border-t border-blue-50 pt-2">
+              <div className="mt-2 flex flex-col gap-1 border-t border-gray-100 pt-2">
                 {serviceItems.map((service) => (
                   <NavLink
                     key={service.name}
                     to={service.path}
                     className={({ isActive }) =>
-                      `group flex items-center justify-between rounded-[1.15rem] px-4 py-3.5 transition-all duration-200 ${
+                      `group flex items-center justify-between rounded-xl px-3 py-3 transition-all duration-200 ${
                         isActive
-                          ? "bg-blue-50 text-blue-700"
-                          : "text-slate-600 hover:bg-blue-50 hover:text-blue-700"
+                          ? "bg-indigo-50 text-indigo-700"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-indigo-600"
                       }`
                     }
                   >
-                    <span className="text-xs font-black uppercase tracking-[0.13em]">
+                    <span className="font-['Inter',sans-serif] text-sm font-medium">
                       {service.name}
                     </span>
-
-                    <ExternalLink className="h-3.5 w-3.5 opacity-35 transition-all group-hover:opacity-100" />
+                    <ExternalLink className="h-4 w-4 opacity-0 transition-all group-hover:opacity-100" />
                   </NavLink>
                 ))}
               </div>
@@ -158,107 +150,86 @@ export default function Navigation() {
           <button
             type="button"
             onClick={() => scrollToSection("quote")}
-            className="inline-flex items-center gap-3 rounded-full border border-blue-100 bg-blue-700 px-6 py-3 text-[10px] font-black uppercase tracking-[0.16em] text-white shadow-lg shadow-blue-700/15 transition-all duration-300 hover:bg-blue-800 active:scale-[0.98]"
+            className="font-['Inter',sans-serif] inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition-all duration-300 hover:bg-indigo-700 hover:shadow-md active:scale-95"
           >
             Get Quote
-            <ArrowUpRight className="h-4 w-4" />
+            <ArrowUpRight className="h-5 w-5" />
           </button>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
           type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-blue-100 bg-white text-slate-950 shadow-sm transition-all hover:bg-blue-50 md:hidden"
+          className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-50 text-gray-700 transition-colors hover:bg-gray-100 md:hidden"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label="Toggle navigation menu"
-          aria-expanded={isOpen}
         >
-          <div className="relative flex h-4 w-5 flex-col justify-between">
-            <span
-              className={`h-0.5 w-full rounded-full bg-slate-950 transition-all duration-300 ${
-                isOpen ? "translate-y-1.5 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`h-0.5 w-full rounded-full bg-slate-950 transition-all duration-300 ${
-                isOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`h-0.5 w-full rounded-full bg-slate-950 transition-all duration-300 ${
-                isOpen ? "-translate-y-1.5 -rotate-45" : ""
-              }`}
-            />
-          </div>
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </nav>
 
       {/* Mobile Dropdown Menu */}
       <div
-        className={`overflow-hidden bg-white transition-all duration-500 md:hidden ${
-          isOpen
-            ? "max-h-[620px] border-t border-blue-100 opacity-100"
-            : "max-h-0 opacity-0"
+        className={`overflow-hidden bg-white transition-all duration-300 md:hidden ${
+          isOpen ? "max-h-[800px] border-t border-gray-100 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="mx-auto w-full max-w-[1700px] px-5 py-5 sm:px-8">
-          <div className="rounded-[1.5rem] border border-blue-100 bg-white p-4 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
-            <div className="grid gap-2">
-              {navLinks.map((link) => (
+        <div className="mx-auto w-full px-5 py-6 sm:px-8">
+          <div className="flex flex-col gap-2">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `font-['Inter',sans-serif] rounded-xl px-4 py-3.5 text-lg font-medium transition-all ${
+                    isActive
+                      ? "bg-indigo-50 text-indigo-700"
+                      : "text-gray-700 hover:bg-gray-50"
+                  }`
+                }
+              >
+                {link.name}
+              </NavLink>
+            ))}
+          </div>
+
+          <div className="my-6 border-t border-gray-100 pt-6">
+            <span className="font-['Poppins',sans-serif] px-4 text-sm font-semibold text-gray-400">
+              SERVICES
+            </span>
+
+            <div className="mt-4 flex flex-col gap-2">
+              {serviceItems.map((service) => (
                 <NavLink
-                  key={link.name}
-                  to={link.path}
+                  key={service.name}
+                  to={service.path}
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
-                    `rounded-[1.15rem] px-4 py-3.5 text-xs font-black uppercase tracking-[0.16em] transition-all ${
+                    `font-['Inter',sans-serif] rounded-xl border px-4 py-3.5 text-base font-medium transition-all ${
                       isActive
-                        ? "bg-blue-50 text-blue-700"
-                        : "text-slate-600 hover:bg-blue-50 hover:text-blue-700"
+                        ? "border-indigo-100 bg-indigo-50 text-indigo-700"
+                        : "border-transparent text-gray-700 hover:bg-gray-50"
                     }`
                   }
                 >
-                  {link.name}
+                  {service.name}
                 </NavLink>
               ))}
             </div>
-
-            <div className="my-5 border-t border-blue-50 pt-5">
-              <span className="px-2 text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">
-                Services
-              </span>
-
-              <div className="mt-3 grid gap-2">
-                {serviceItems.map((service) => (
-                  <NavLink
-                    key={service.name}
-                    to={service.path}
-                    onClick={() => setIsOpen(false)}
-                    className={({ isActive }) =>
-                      `rounded-[1.15rem] border px-4 py-3.5 text-xs font-bold uppercase tracking-[0.13em] transition-all ${
-                        isActive
-                          ? "border-blue-200 bg-blue-50 text-blue-700"
-                          : "border-blue-100 text-slate-600 hover:bg-blue-50 hover:text-blue-700"
-                      }`
-                    }
-                  >
-                    {service.name}
-                  </NavLink>
-                ))}
-              </div>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => {
-                scrollToSection("quote");
-                setIsOpen(false);
-              }}
-              className="inline-flex w-full items-center justify-center gap-3 rounded-[1.15rem] bg-blue-700 px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white shadow-lg shadow-blue-700/15 transition-all hover:bg-blue-800 active:scale-[0.98]"
-            >
-              Get Quote
-              <ArrowUpRight className="h-4 w-4" />
-            </button>
           </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              scrollToSection("quote");
+              setIsOpen(false);
+            }}
+            className="font-['Inter',sans-serif] mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-4 text-lg font-semibold text-white shadow-sm transition-all hover:bg-indigo-700 active:scale-95"
+          >
+            Get Quote
+            <ArrowUpRight className="h-5 w-5" />
+          </button>
         </div>
       </div>
     </header>

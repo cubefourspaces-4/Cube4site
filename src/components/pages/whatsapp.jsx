@@ -6,18 +6,19 @@ export default function FloatingContact() {
   const whatsappNumber = "919876543210";
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2.5 sm:bottom-6 sm:right-6 sm:gap-3">
+      
       {/* Phone Call Button */}
       <a
         href={`tel:${phoneNumber}`}
-        className="group flex items-center gap-3 rounded-full bg-white px-4 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.12)] ring-1 ring-black/5 transition-all duration-300 hover:scale-105 hover:shadow-[0_14px_35px_rgba(0,0,0,0.16)]"
+        className="group flex items-center gap-3 rounded-full bg-white px-3.5 py-2.5 shadow-lg shadow-slate-950/5 ring-1 ring-slate-200 transition-all duration-300 hover:scale-105 hover:shadow-xl sm:px-4 sm:py-3"
         aria-label="Call us"
       >
-        <span className="hidden text-sm font-semibold text-stone-800 sm:block">
+        <span className="font-['Inter',sans-serif] hidden text-xs font-semibold text-slate-700 sm:block sm:text-sm">
           Call Us
         </span>
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-stone-950 text-white transition group-hover:bg-stone-800">
-          <Phone className="h-5 w-5" />
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-white transition-all group-hover:bg-indigo-600 sm:h-11 sm:w-11">
+          <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
         </span>
       </a>
 
@@ -26,16 +27,17 @@ export default function FloatingContact() {
         href={`https://wa.me/${whatsappNumber}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center gap-3 rounded-full bg-[#25D366] px-4 py-3 shadow-[0_10px_30px_rgba(37,211,102,0.28)] transition-all duration-300 hover:scale-105 hover:shadow-[0_14px_35px_rgba(37,211,102,0.34)]"
+        className="group flex items-center gap-3 rounded-full bg-[#25D366] px-3.5 py-2.5 shadow-lg shadow-emerald-600/20 transition-all duration-300 hover:scale-105 hover:shadow-xl sm:px-4 sm:py-3"
         aria-label="Chat on WhatsApp"
       >
-        <span className="hidden text-sm font-semibold text-white sm:block">
+        <span className="font-['Inter',sans-serif] hidden text-xs font-semibold text-white sm:block sm:text-sm">
           WhatsApp
         </span>
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#25D366] transition group-hover:scale-105">
-          <MessageCircle className="h-5 w-5" />
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#25D366] transition-transform group-hover:scale-105 sm:h-11 sm:w-11">
+          <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
         </span>
       </a>
+      
     </div>
   );
 }

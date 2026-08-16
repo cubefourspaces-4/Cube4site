@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { X, MessageCircle, ArrowUpRight } from "lucide-react";
 
+// Assuming these are your imports
 import Image1 from "../../assests/gallery/gallery1.webp";
 import Image2 from "../../assests/gallery/gallery2.webp";
 import Image3 from "../../assests/gallery/gallery3.webp";
@@ -99,19 +100,21 @@ export default function GalleryGrid() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#f7f5f0] py-20 text-stone-950 md:py-28">
-      <div className="pointer-events-none absolute left-0 top-0 h-[420px] w-[420px] rounded-full bg-stone-300/20 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-indigo-200/20 blur-[120px]" />
+    <section className="relative min-h-screen w-full overflow-hidden bg-slate-50 py-12 md:py-24">
+      {/* Background Decor */}
+      <div className="pointer-events-none absolute left-0 top-0 h-[300px] w-[300px] rounded-full bg-slate-200/40 blur-[100px] md:h-[500px] md:w-[500px]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[300px] w-[300px] rounded-full bg-indigo-200/30 blur-[100px] md:h-[500px] md:w-[500px]" />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1700px] px-5 sm:px-8 lg:px-12 xl:px-16">
+      <div className="relative z-10 mx-auto w-full max-w-[1600px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        
         {/* Header */}
-        <header className="mb-14 grid gap-8 lg:mb-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+        <header className="mb-10 grid gap-6 md:mb-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <div>
-            <span className="mb-5 inline-flex rounded-full border border-stone-200 bg-white px-5 py-2 text-xs font-black uppercase tracking-[0.22em] text-stone-500 shadow-sm">
+            <span className="font-['Poppins',sans-serif] mb-4 inline-flex rounded-full border border-indigo-100 bg-indigo-50 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-indigo-700 md:mb-6 md:px-5 md:py-2 md:text-sm">
               Project Gallery
             </span>
 
-            <h1 className="max-w-5xl text-5xl font-black leading-[0.95] tracking-[-0.055em] text-stone-950 sm:text-6xl md:text-7xl lg:text-8xl">
+            <h1 className="font-['Poppins',sans-serif] max-w-4xl text-4xl font-black leading-[1.1] tracking-tight text-slate-950 md:text-5xl lg:leading-[1.05]">
               Crafted Spaces.
               <br />
               Built Beautifully.
@@ -119,14 +122,14 @@ export default function GalleryGrid() {
           </div>
 
           <div className="max-w-xl lg:ml-auto">
-            <p className="text-lg font-medium leading-8 text-stone-600 md:text-xl">
+            <p className="font-['Inter',sans-serif] text-base font-medium leading-relaxed text-slate-600 md:text-xl">
               Explore selected Cube4Spaces projects across interiors, kitchens,
               homes, offices, and turnkey spaces.
             </p>
 
             <button
               onClick={() => redirectToWhatsApp("Project Gallery")}
-              className="mt-7 inline-flex items-center gap-3 rounded-full bg-stone-950 px-7 py-4 text-sm font-black uppercase tracking-[0.12em] text-white shadow-lg transition hover:bg-orange-600"
+              className="font-['Inter',sans-serif] mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-indigo-600 active:scale-95 sm:w-auto md:mt-8 md:px-8 md:py-4 md:text-base"
             >
               Chat on WhatsApp
               <MessageCircle className="h-5 w-5" />
@@ -134,14 +137,14 @@ export default function GalleryGrid() {
           </div>
         </header>
 
-        {/* Gallery Grid - 6 x 1 on large screens */}
-        <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+        {/* Gallery Grid */}
+        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:gap-8">
           {projects.map((project, index) => (
             <article
               key={project.id}
               onClick={() => openModal(project)}
-              className={`group relative cursor-pointer overflow-hidden rounded-[2rem] border border-white/70 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl ${
-                index % 2 === 0 ? "2xl:mt-0" : "2xl:mt-12"
+              className={`group relative cursor-pointer overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl md:rounded-[2rem] ${
+                index % 2 === 0 ? "lg:mt-0" : "lg:mt-10"
               }`}
             >
               <div className="relative aspect-[4/5] overflow-hidden">
@@ -153,28 +156,28 @@ export default function GalleryGrid() {
                   className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/20 to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
 
-                <div className="absolute left-5 right-5 top-5 flex items-center justify-between">
-                  <span className="rounded-full bg-white/90 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-stone-800 backdrop-blur">
+                <div className="absolute left-4 right-4 top-4 flex items-center justify-between md:left-6 md:right-6 md:top-6">
+                  <span className="font-['Poppins',sans-serif] rounded-full bg-white/95 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-800 backdrop-blur md:px-4 md:py-2 md:text-xs">
                     {project.category}
                   </span>
 
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-stone-950 backdrop-blur transition group-hover:bg-orange-600 group-hover:text-white">
-                    <ArrowUpRight className="h-4 w-4" />
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/95 text-slate-900 backdrop-blur transition-colors group-hover:bg-indigo-600 group-hover:text-white md:h-10 md:w-10">
+                    <ArrowUpRight className="h-4 w-4 md:h-5 md:w-5" />
                   </span>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="mb-3 block text-xs font-black uppercase tracking-[0.18em] text-white/60">
+                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8">
+                  <span className="font-['Poppins',sans-serif] mb-2 block text-xs font-bold text-white/70 md:mb-3 md:text-sm">
                     0{project.id}
                   </span>
 
-                  <h3 className="text-2xl font-black leading-tight tracking-[-0.03em] text-white">
+                  <h3 className="font-['Poppins',sans-serif] text-2xl font-bold leading-tight text-white md:text-3xl">
                     {project.title}
                   </h3>
 
-                  <p className="mt-3 line-clamp-2 text-sm font-medium leading-6 text-white/75">
+                  <p className="font-['Inter',sans-serif] mt-2 line-clamp-2 text-sm font-medium leading-relaxed text-slate-300 md:mt-3 md:text-base">
                     {project.desc}
                   </p>
                 </div>
@@ -184,29 +187,26 @@ export default function GalleryGrid() {
         </div>
 
         {/* Bottom Studio Section */}
-        <section className="mt-24 overflow-hidden rounded-[3rem] bg-[#f4f2ed] px-5 py-16 md:px-10 md:py-24">
-          <div className="mx-auto max-w-[1500px]">
+        <section className="mt-16 overflow-hidden rounded-3xl bg-white px-4 py-12 shadow-sm md:mt-24 md:rounded-[3rem] md:px-10 md:py-20 lg:px-16 lg:py-24">
+          <div className="mx-auto max-w-[1400px]">
+            
             {/* Top Heading */}
-            <div className="mb-16 grid gap-10 lg:grid-cols-[0.35fr_1fr] lg:items-start">
-              <div className="hidden lg:block">
-                <div className="mt-10 h-5 w-5 rotate-45 bg-orange-600" />
-              </div>
-
+            <div className="mb-10 grid gap-6 md:mb-16 lg:grid-cols-[1fr_1fr] lg:items-start">
               <div>
-                <span className="mb-5 block text-xs font-black uppercase tracking-[0.22em] text-orange-600">
+                <span className="font-['Poppins',sans-serif] mb-4 block text-sm font-bold uppercase tracking-[0.2em] text-indigo-600 md:mb-6">
                   About Studio
                 </span>
 
-                <h2 className="max-w-5xl text-4xl font-black leading-[1.02] tracking-[-0.055em] text-stone-950 sm:text-5xl md:text-6xl lg:text-7xl">
-                  Cube4Spaces is an interior studio{" "}
-                  <span className="inline-flex h-10 w-24 translate-y-1 rounded-full bg-gradient-to-r from-orange-700 via-orange-400 to-stone-950 shadow-inner md:h-12 md:w-32" />{" "}
-                  that creates beautiful spaces with{" "}
-                  <span className="text-stone-400">
+                <h2 className="font-['Poppins',sans-serif] max-w-2xl text-3xl font-black leading-[1.1] tracking-tight text-slate-950 md:text-4xl lg:text-5xl">
+                  Cube4Spaces creates beautiful spaces with{" "}
+                  <span className="text-slate-400">
                     practical planning and premium execution.
                   </span>
                 </h2>
-
-                <p className="mt-6 max-w-xl text-sm font-medium leading-6 text-stone-500 md:text-base md:leading-7">
+              </div>
+              
+              <div className="lg:pt-10">
+                <p className="font-['Inter',sans-serif] max-w-xl text-base font-medium leading-relaxed text-slate-600 md:text-lg lg:text-xl">
                   We combine design thinking, material knowledge, and site
                   execution to deliver interiors that look refined and work well
                   in real life.
@@ -215,18 +215,18 @@ export default function GalleryGrid() {
             </div>
 
             {/* Bottom Cards */}
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4 xl:items-end">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:items-end">
               {bottomCards.map((card, index) => (
                 <article
                   key={card.title}
-                  className={`group relative min-h-[300px] overflow-hidden rounded-[2rem] border p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl md:min-h-[360px] ${
-                    index === 1 ? "xl:translate-y-12" : ""
-                  } ${index === 3 ? "xl:translate-y-12" : ""} ${
+                  className={`group relative min-h-[220px] overflow-hidden rounded-2xl border p-5 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl md:min-h-[320px] md:rounded-[2rem] md:p-8 ${
+                    index === 1 || index === 3 ? "lg:translate-y-8" : ""
+                  } ${
                     card.dark
-                      ? "border-stone-900 bg-stone-950 text-white"
+                      ? "border-slate-900 bg-slate-950 text-white"
                       : card.soft
-                      ? "border-stone-200 bg-stone-200 text-stone-950"
-                      : "border-stone-200 bg-white text-white"
+                      ? "border-slate-200 bg-slate-100 text-slate-900"
+                      : "border-slate-200 bg-white text-white"
                   }`}
                 >
                   {card.image && (
@@ -238,34 +238,30 @@ export default function GalleryGrid() {
                         decoding="async"
                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/35 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
                     </>
                   )}
 
-                  <div className="relative z-10 flex h-full min-h-[250px] flex-col justify-between md:min-h-[300px]">
-                    <div className="flex items-start justify-between">
-                      <span
-                        className={`rounded-full border px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] ${
-                          card.dark
-                            ? "border-white/30 text-white/80"
-                            : card.soft
-                            ? "border-stone-400 text-stone-600"
-                            : "border-white/40 text-white/80"
-                        }`}
-                      >
-                        {card.label}
-                      </span>
+                  <div className="relative z-10 flex h-full flex-col justify-between">
+                    <span
+                      className={`font-['Poppins',sans-serif] w-fit rounded-full border px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider md:px-4 md:py-2 md:text-xs ${
+                        card.dark
+                          ? "border-slate-700 bg-slate-800/50 text-slate-300"
+                          : card.soft
+                          ? "border-slate-300 bg-white/50 text-slate-600"
+                          : "border-white/30 bg-black/20 text-white/90 backdrop-blur-md"
+                      }`}
+                    >
+                      {card.label}
+                    </span>
 
-                      <span className="mt-2 h-3 w-3 rotate-45 bg-orange-600" />
-                    </div>
-
-                    <div>
+                    <div className="mt-8 md:mt-0">
                       <h3
-                        className={`text-2xl font-black leading-tight tracking-[-0.04em] md:text-3xl ${
+                        className={`font-['Poppins',sans-serif] text-xl font-bold leading-tight md:text-2xl ${
                           card.dark
                             ? "text-white"
                             : card.soft
-                            ? "text-stone-950"
+                            ? "text-slate-950"
                             : "text-white"
                         }`}
                       >
@@ -273,12 +269,12 @@ export default function GalleryGrid() {
                       </h3>
 
                       <p
-                        className={`mt-4 max-w-xs text-sm font-medium leading-6 ${
+                        className={`font-['Inter',sans-serif] mt-2 max-w-xs text-sm font-medium leading-relaxed md:mt-3 md:text-base ${
                           card.dark
-                            ? "text-white/60"
+                            ? "text-slate-400"
                             : card.soft
-                            ? "text-stone-500"
-                            : "text-white/65"
+                            ? "text-slate-600"
+                            : "text-slate-200"
                         }`}
                       >
                         {card.desc}
@@ -290,20 +286,19 @@ export default function GalleryGrid() {
             </div>
 
             {/* CTA Strip */}
-            <div className="mt-20 flex flex-col items-start justify-between gap-6 rounded-[2rem] bg-white p-7 shadow-sm md:flex-row md:items-center md:p-9">
+            <div className="mt-12 flex flex-col items-start justify-between gap-5 rounded-2xl bg-indigo-50 p-6 md:mt-24 md:flex-row md:items-center md:rounded-[2rem] md:p-10">
               <div>
-                <span className="text-xs font-black uppercase tracking-[0.22em] text-orange-600">
+                <span className="font-['Poppins',sans-serif] text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 md:text-sm">
                   Start Your Project
                 </span>
-
-                <h3 className="mt-3 text-3xl font-black tracking-[-0.04em] text-stone-950 md:text-4xl">
+                <h3 className="font-['Poppins',sans-serif] mt-2 text-2xl font-black text-slate-950 md:mt-3 md:text-4xl">
                   Ready to design your space?
                 </h3>
               </div>
 
               <button
                 onClick={() => redirectToWhatsApp("New Interior Project")}
-                className="inline-flex items-center gap-3 rounded-full bg-stone-950 px-8 py-4 text-sm font-black uppercase tracking-[0.12em] text-white shadow-lg transition hover:bg-orange-600"
+                className="font-['Inter',sans-serif] inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-4 text-base font-semibold text-white shadow-sm transition-all hover:bg-indigo-700 active:scale-95 md:w-auto md:px-8 md:text-lg"
               >
                 Get Project Quote
                 <MessageCircle className="h-5 w-5" />
@@ -315,40 +310,41 @@ export default function GalleryGrid() {
         {/* Modal */}
         {selectedProject && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/80 p-4 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm md:p-8"
             onClick={closeModal}
           >
             <div
-              className="relative grid max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-[2.5rem] bg-white shadow-2xl md:grid-cols-[1fr_0.9fr]"
+              className="relative flex max-h-[90vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl md:flex-row md:rounded-[2.5rem]"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative min-h-[320px] md:min-h-[560px]">
+              {/* Modal Image */}
+              <div className="relative h-64 w-full flex-shrink-0 md:h-auto md:w-1/2">
                 <img
                   src={selectedProject.img}
                   alt={selectedProject.title}
                   className="h-full w-full object-cover"
                 />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/50 to-transparent md:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent md:hidden" />
               </div>
 
-              <div className="flex flex-col justify-center p-8 md:p-12">
-                <span className="mb-5 inline-flex w-fit rounded-full bg-orange-50 px-5 py-2 text-xs font-black uppercase tracking-[0.18em] text-orange-600">
+              {/* Modal Content */}
+              <div className="flex flex-col justify-center overflow-y-auto p-6 md:w-1/2 md:p-12 lg:p-16">
+                <span className="font-['Poppins',sans-serif] mb-3 inline-flex w-fit rounded-full bg-indigo-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-indigo-600 md:mb-5 md:px-5 md:py-2 md:text-sm">
                   {selectedProject.category}
                 </span>
 
-                <h2 className="text-4xl font-black leading-tight tracking-[-0.04em] text-stone-950 md:text-6xl">
+                <h2 className="font-['Poppins',sans-serif] text-3xl font-black leading-tight text-slate-950 md:text-5xl">
                   {selectedProject.title}
                 </h2>
 
-                <p className="mt-6 text-lg font-medium leading-8 text-stone-600">
+                <p className="font-['Inter',sans-serif] mt-4 text-base font-medium leading-relaxed text-slate-600 md:mt-6 md:text-lg lg:text-xl">
                   {selectedProject.desc}
                 </p>
 
-                <div className="mt-9 border-t border-stone-100 pt-7">
+                <div className="mt-8 border-t border-slate-100 pt-6 md:mt-10 md:pt-8">
                   <button
                     onClick={() => redirectToWhatsApp(selectedProject.title)}
-                    className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-stone-950 px-8 py-4 text-sm font-black uppercase tracking-[0.12em] text-white shadow-lg transition hover:bg-orange-600 sm:w-auto"
+                    className="font-['Inter',sans-serif] inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-950 px-6 py-4 text-base font-semibold text-white transition-all hover:bg-indigo-600 active:scale-95 sm:w-auto md:px-8 md:text-lg"
                   >
                     Get Quote on WhatsApp
                     <MessageCircle className="h-5 w-5" />
@@ -356,12 +352,13 @@ export default function GalleryGrid() {
                 </div>
               </div>
 
+              {/* Close Button */}
               <button
                 onClick={closeModal}
-                className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-white text-stone-950 shadow-lg transition hover:bg-stone-100"
+                className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-900 shadow-sm backdrop-blur transition-colors hover:bg-slate-100 md:right-6 md:top-6 md:h-12 md:w-12"
                 aria-label="Close modal"
               >
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5 md:h-6 md:w-6" />
               </button>
             </div>
           </div>

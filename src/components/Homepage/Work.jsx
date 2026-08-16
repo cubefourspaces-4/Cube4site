@@ -120,9 +120,6 @@ export default function Work() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const headingFont =
-    "font-[family-name:Sora,Plus_Jakarta_Sans,Inter,sans-serif] font-extrabold tracking-[-0.055em]";
-
   const filteredProjects =
     activeCategory === "All"
       ? projects
@@ -143,26 +140,25 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="relative min-h-screen overflow-hidden bg-[#f4f7fb] py-20 text-stone-950 md:py-28"
+      className="relative w-full overflow-hidden bg-slate-50 py-12 md:py-24"
     >
-      <div className="relative z-10 mx-auto w-full max-w-[1700px] px-5 sm:px-8 lg:px-12 xl:px-16">
+      <div className="relative z-10 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-12 xl:px-16">
+        
         {/* Section Header */}
-        <div className="mx-auto mb-16 max-w-5xl text-center md:mb-20">
-          <div className="mb-6 inline-flex rounded-full border border-blue-100 bg-white px-5 py-2 shadow-sm">
-            <span className="text-xs font-black uppercase tracking-[0.22em] text-blue-700">
+        <div className="mx-auto mb-10 max-w-4xl text-center md:mb-16">
+          <div className="mb-4 inline-flex items-center justify-center rounded-full border border-indigo-100 bg-white px-4 py-1.5 shadow-sm md:mb-6 md:px-5 md:py-2">
+            <span className="font-['Poppins',sans-serif] text-xs font-bold uppercase tracking-[0.2em] text-indigo-700 md:text-sm">
               Selected Works
             </span>
           </div>
 
-          <h2
-            className={`mx-auto max-w-5xl text-5xl leading-[0.98] text-stone-950 sm:text-6xl md:text-7xl lg:text-8xl ${headingFont}`}
-          >
+          <h2 className="font-['Poppins',sans-serif] mx-auto text-4xl font-black leading-[1.1] tracking-tight text-slate-950 md:text-5xl">
             Designed Spaces.
             <br />
-            <span className="text-blue-500">Delivered Well.</span>
+            <span className="text-indigo-600">Delivered Well.</span>
           </h2>
 
-          <p className="mx-auto mt-7 max-w-2xl text-base font-medium leading-8 text-stone-600 md:text-lg">
+          <p className="font-['Inter',sans-serif] mx-auto mt-4 max-w-2xl text-sm font-medium leading-relaxed text-slate-600 md:mt-6 md:text-lg">
             Explore our residential, commercial, and turnkey projects designed
             with practical planning, quality materials, and professional
             execution.
@@ -170,7 +166,7 @@ export default function Work() {
         </div>
 
         {/* Filter Navigation */}
-        <div className="mb-16 flex flex-wrap justify-center gap-3">
+        <div className="mb-10 flex flex-wrap justify-center gap-2 md:mb-16 md:gap-3">
           {["All", "Residential", "Commercial", "Turnkey"].map((cat) => (
             <button
               key={cat}
@@ -178,10 +174,10 @@ export default function Work() {
                 setActiveCategory(cat);
                 setCurrentIndex(0);
               }}
-              className={`rounded-full border px-7 py-3 text-xs font-black uppercase tracking-[0.16em] transition-colors ${
+              className={`font-['Poppins',sans-serif] rounded-full border px-5 py-2 text-[10px] font-bold uppercase tracking-wider transition-all md:px-7 md:py-3 md:text-xs md:tracking-[0.15em] ${
                 activeCategory === cat
-                  ? "border-blue-700 bg-blue-700 text-white"
-                  : "border-blue-100 bg-white text-stone-600 hover:border-blue-300 hover:text-blue-700"
+                  ? "border-indigo-600 bg-indigo-600 text-white shadow-md shadow-indigo-600/20"
+                  : "border-slate-200 bg-white text-slate-600 hover:border-indigo-300 hover:text-indigo-600"
               }`}
             >
               {cat}
@@ -190,42 +186,40 @@ export default function Work() {
         </div>
 
         {/* Gallery Feature Container */}
-        <div className="relative mx-auto mb-16 flex w-full max-w-7xl flex-col items-center rounded-[3rem] border border-blue-100 bg-white p-5 shadow-sm sm:p-8 md:p-10">
+        <div className="relative mx-auto mb-12 flex w-full max-w-7xl flex-col items-center rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:mb-16 md:rounded-[3rem] md:p-10">
+          
           {/* Slider Header */}
-          <div className="mb-10 flex w-full items-center justify-between gap-5">
+          <div className="mb-6 flex w-full flex-col items-start justify-between gap-4 sm:flex-row sm:items-center md:mb-10">
             <div>
-              <span className="text-xs font-black uppercase tracking-[0.22em] text-blue-700">
+              <span className="font-['Poppins',sans-serif] text-[10px] font-bold uppercase tracking-wider text-indigo-600 md:text-xs md:tracking-[0.2em]">
                 Project Showcase
               </span>
-
-              <h3
-                className={`mt-3 text-3xl leading-tight text-stone-950 md:text-5xl ${headingFont}`}
-              >
+              <h3 className="font-['Poppins',sans-serif] mt-1 text-2xl font-bold leading-tight text-slate-950 md:mt-2 md:text-4xl lg:text-5xl">
                 Recent project work
               </h3>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-2 sm:flex md:gap-3">
               <button
                 onClick={prevSlide}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-blue-100 bg-white text-stone-700 transition-colors hover:bg-blue-50 hover:text-blue-700"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700 md:h-12 md:w-12"
                 aria-label="Previous project"
               >
-                <ArrowLeft className="h-4 w-4" />
+                <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
               </button>
 
               <button
                 onClick={nextSlide}
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-stone-950 text-white transition-colors hover:bg-blue-700"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-white transition-colors hover:bg-indigo-600 md:h-12 md:w-12"
                 aria-label="Next project"
               >
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
               </button>
             </div>
           </div>
 
           {/* Main Gallery Display */}
-          <div className="relative flex min-h-[560px] w-full items-center justify-center overflow-hidden py-6 sm:min-h-[620px]">
+          <div className="relative flex min-h-[460px] w-full items-center justify-center overflow-hidden py-4 sm:min-h-[500px] md:min-h-[600px] md:py-6">
             {filteredProjects.map((project, index) => {
               const isActive = index === currentIndex;
               const isPrev =
@@ -236,26 +230,26 @@ export default function Work() {
                 index === (currentIndex + 1) % filteredProjects.length;
 
               let positionClass =
-                "pointer-events-none invisible translate-x-24 scale-95 opacity-0";
+                "pointer-events-none invisible translate-x-12 scale-95 opacity-0 md:translate-x-24";
 
               if (isActive) {
                 positionClass =
-                  "z-30 translate-x-0 scale-100 opacity-100 shadow-xl";
+                  "z-30 translate-x-0 scale-100 opacity-100 shadow-xl shadow-slate-900/5";
               } else if (isPrev) {
                 positionClass =
-                  "z-10 -translate-x-44 scale-90 opacity-20 max-md:hidden";
+                  "z-10 -translate-x-24 scale-90 opacity-20 max-sm:hidden md:-translate-x-44";
               } else if (isNext) {
                 positionClass =
-                  "z-10 translate-x-44 scale-90 opacity-20 max-md:hidden";
+                  "z-10 translate-x-24 scale-90 opacity-20 max-sm:hidden md:translate-x-44";
               }
 
               return (
                 <article
                   key={`${project.title}-${index}`}
-                  className={`absolute flex aspect-[4/5] w-full max-w-[300px] flex-col justify-between rounded-[2.25rem] border border-blue-100 bg-white p-5 transition-[opacity,transform] duration-500 ease-out sm:max-w-[360px] md:max-w-[420px] ${positionClass}`}
+                  className={`absolute flex aspect-[4/5] w-full max-w-[280px] flex-col justify-between rounded-2xl border border-slate-100 bg-white p-4 transition-[opacity,transform] duration-500 ease-out sm:max-w-[320px] md:max-w-[380px] md:rounded-[2rem] md:p-5 lg:max-w-[420px] ${positionClass}`}
                 >
                   {/* Card Image */}
-                  <div className="relative h-[48%] overflow-hidden rounded-[1.6rem] border border-stone-100">
+                  <div className="relative h-[48%] overflow-hidden rounded-xl border border-slate-100 md:rounded-2xl">
                     <img
                       src={project.img}
                       alt={project.title}
@@ -264,41 +258,39 @@ export default function Work() {
                       className="h-full w-full object-cover"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/55 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
 
-                    <div className="absolute bottom-4 left-5 flex items-center gap-5 text-white">
-                      <div className="flex items-center gap-1.5 text-xs font-bold">
-                        <Eye className="h-4 w-4 text-blue-300" />
+                    <div className="absolute bottom-3 left-4 flex items-center gap-4 text-white md:bottom-4 md:left-5">
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold md:text-xs">
+                        <Eye className="h-3.5 w-3.5 text-indigo-300 md:h-4 md:w-4" />
                         {project.views}
                       </div>
 
-                      <div className="flex items-center gap-1.5 text-xs font-bold">
-                        <Heart className="h-4 w-4 text-rose-300" />
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold md:text-xs">
+                        <Heart className="h-3.5 w-3.5 text-rose-300 md:h-4 md:w-4" />
                         {project.likes}
                       </div>
                     </div>
                   </div>
 
                   {/* Card Content */}
-                  <div className="mt-6 flex h-[44%] flex-col justify-between">
+                  <div className="mt-4 flex h-[46%] flex-col justify-between md:mt-5">
                     <div>
-                      <span className="mb-3 block text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+                      <span className="font-['Poppins',sans-serif] mb-2 block text-[10px] font-bold uppercase tracking-wider text-indigo-600 md:mb-3 md:text-xs md:tracking-[0.15em]">
                         {project.category}
                       </span>
 
-                      <h3
-                        className={`line-clamp-2 text-2xl leading-tight text-stone-950 md:text-3xl ${headingFont}`}
-                      >
+                      <h3 className="font-['Poppins',sans-serif] line-clamp-2 text-xl font-bold leading-tight text-slate-950 md:text-2xl lg:text-3xl">
                         {project.title}
                       </h3>
 
-                      <p className="mt-4 line-clamp-3 text-sm font-medium leading-6 text-stone-600">
+                      <p className="font-['Inter',sans-serif] mt-2 line-clamp-3 text-xs font-medium leading-relaxed text-slate-600 md:mt-3 md:text-sm">
                         {project.description}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between border-t border-blue-50 pt-5">
-                      <span className="rounded-full bg-blue-50 px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-blue-700">
+                    <div className="flex items-center justify-between border-t border-slate-100 pt-3 md:pt-4">
+                      <span className="font-['Poppins',sans-serif] rounded-full bg-indigo-50 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 md:px-4 md:py-2 md:text-xs">
                         {project.timeline}
                       </span>
 
@@ -308,10 +300,10 @@ export default function Work() {
                             .getElementById("contact")
                             ?.scrollIntoView({ behavior: "smooth" })
                         }
-                        className="flex items-center text-xs font-black uppercase tracking-[0.12em] text-blue-700 transition-colors hover:text-blue-500"
+                        className="font-['Inter',sans-serif] flex items-center text-[10px] font-bold uppercase tracking-wider text-indigo-600 transition-colors hover:text-indigo-500 md:text-xs md:tracking-[0.1em]"
                       >
                         Details
-                        <ChevronRight className="ml-1 h-4 w-4" />
+                        <ChevronRight className="ml-0.5 h-3.5 w-3.5 md:ml-1 md:h-4 md:w-4" />
                       </button>
                     </div>
                   </div>
@@ -319,10 +311,28 @@ export default function Work() {
               );
             })}
           </div>
+
+          {/* Mobile Navigation Controls */}
+          <div className="mt-4 flex items-center justify-center gap-4 sm:hidden">
+            <button
+              onClick={prevSlide}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-indigo-50 hover:text-indigo-700"
+              aria-label="Previous project"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-white transition-colors hover:bg-indigo-600"
+              aria-label="Next project"
+            >
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
         </div>
 
         {/* Stats Section */}
-        <div className="mx-auto mt-20 grid w-full max-w-7xl grid-cols-2 gap-4 rounded-[2.5rem] border border-blue-100 bg-white p-6 shadow-sm md:p-10 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid w-full max-w-7xl grid-cols-2 gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:mt-20 md:gap-5 md:rounded-[2.5rem] md:p-8 lg:grid-cols-4 lg:p-10">
           {[
             { value: "50+", label: "Projects Completed" },
             { value: "45+", label: "Happy Clients" },
@@ -331,15 +341,12 @@ export default function Work() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="rounded-[2rem] bg-[#f4f7fb] p-6 text-center"
+              className="flex flex-col items-center justify-center rounded-xl bg-slate-50 p-4 text-center md:rounded-[2rem] md:p-6 lg:p-8"
             >
-              <span
-                className={`block text-4xl leading-none text-blue-700 md:text-5xl ${headingFont}`}
-              >
+              <span className="font-['Poppins',sans-serif] block text-3xl font-black leading-none text-indigo-600 md:text-4xl lg:text-5xl">
                 {stat.value}
               </span>
-
-              <span className="mt-3 block text-xs font-black uppercase tracking-[0.16em] text-stone-500">
+              <span className="font-['Inter',sans-serif] mt-2 block text-[10px] font-bold uppercase tracking-wider text-slate-500 md:mt-3 md:text-xs md:tracking-[0.15em]">
                 {stat.label}
               </span>
             </div>
@@ -347,33 +354,8 @@ export default function Work() {
         </div>
 
         {/* Action Call Section */}
-        <div className="mx-auto mt-20 max-w-4xl overflow-hidden rounded-[3rem] bg-blue-950 p-8 text-center text-white shadow-sm md:p-14">
-          <span className="text-xs font-black uppercase tracking-[0.22em] text-blue-300">
-            Start Your Project
-          </span>
-
-          <h3
-            className={`mx-auto mt-4 max-w-3xl text-4xl leading-tight text-white md:text-6xl ${headingFont}`}
-          >
-            Have a project in mind?
-          </h3>
-
-          <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-8 text-white/65 md:text-lg">
-            Share your requirement with us. We will guide you with the right
-            design, timeline, and transparent project estimate.
-          </p>
-
-          <button
-            onClick={() =>
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="mt-9 rounded-full bg-white px-9 py-4 text-sm font-black uppercase tracking-[0.12em] text-blue-950 shadow-lg transition-colors hover:bg-blue-500 hover:text-white"
-          >
-            Request a Quote
-          </button>
-        </div>
+       
+        
       </div>
     </section>
   );

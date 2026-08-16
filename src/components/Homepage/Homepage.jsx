@@ -5,7 +5,7 @@ import Services from '../Homepage/Services';
 import About from '../Homepage/About';
 import Work from '../Homepage/Work';
 import Process from '../Homepage/Process';
-import Gallery from '../Homepage/gallery';
+// import Gallery from '../Homepage/gallery';
 import Blogsec from '../Homepage/Blog1';
 import FAQ from '../Homepage/FAQ';
 import Testimonials from '../Homepage/Testimonials';
@@ -20,7 +20,7 @@ export default function Home() {
       <Hero />
       <Infinityscroll />
       <Services />
-      <Gallery />
+      {/* <Gallery /> */}
       <About />
       <Work />
       <Process />

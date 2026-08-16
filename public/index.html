@@ -3,75 +3,152 @@
   <head>
     <meta charset="utf-8" />
 
-    <!-- Core viewport / browser settings -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="color-scheme" content="light" />
+    <!-- =========================================================
+         CORE
+    ========================================================== -->
 
-    <!-- Favicons / App -->
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
 
-    <!-- Primary SEO -->
-    <title>Cube4Spaces | Interior Design, Construction & Turnkey Solutions</title>
+    <meta
+      name="theme-color"
+      content="#ffffff"
+    />
+
+    <meta
+      name="color-scheme"
+      content="light"
+    />
+
+    <!-- =========================================================
+         FAVICON / APP
+    ========================================================== -->
+
+    <link
+      rel="icon"
+      href="%PUBLIC_URL%/favicon.ico"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      href="%PUBLIC_URL%/logo192.png"
+    />
+
+    <link
+      rel="manifest"
+      href="%PUBLIC_URL%/manifest.json"
+    />
+
+    <!-- =========================================================
+         PRIMARY SEO
+    ========================================================== -->
+
+    <title>
+      Cube4Spaces | Interior Design, Construction & Turnkey Solutions
+    </title>
+
     <meta
       name="title"
       content="Cube4Spaces | Interior Design, Construction & Turnkey Solutions"
     />
+
     <meta
       name="description"
       content="Cube4Spaces delivers premium interior design, turnkey construction, modular kitchens, wardrobes, and custom space solutions crafted for modern living."
     />
-    <link rel="canonical" href="https://www.cube4spaces.com/" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.cube4spaces.com/" />
+    <link
+      rel="canonical"
+      href="https://www.cube4spaces.com/"
+    />
+
+    <!-- =========================================================
+         OPEN GRAPH
+    ========================================================== -->
+
+    <meta
+      property="og:type"
+      content="website"
+    />
+
+    <meta
+      property="og:url"
+      content="https://www.cube4spaces.com/"
+    />
+
     <meta
       property="og:title"
       content="Cube4Spaces | Interior Design, Construction & Turnkey Solutions"
     />
+
     <meta
       property="og:description"
       content="Premium interior design and turnkey construction solutions by Cube4Spaces. Smart layouts, refined finishes, and timeless execution."
     />
-    <meta property="og:image" content="https://www.cube4spaces.com/og-image.png" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://www.cube4spaces.com/" />
+    <meta
+      property="og:image"
+      content="https://www.cube4spaces.com/og-image.png"
+    />
+
+    <!-- =========================================================
+         TWITTER
+    ========================================================== -->
+
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+
+    <meta
+      name="twitter:url"
+      content="https://www.cube4spaces.com/"
+    />
+
     <meta
       name="twitter:title"
       content="Cube4Spaces | Interior Design, Construction & Turnkey Solutions"
     />
+
     <meta
       name="twitter:description"
       content="Cube4Spaces creates premium interiors, modular kitchens, wardrobes, and turnkey spaces designed for modern living."
     />
+
     <meta
       name="twitter:image"
       content="https://www.cube4spaces.com/og-image.png"
     />
 
-    <!-- Performance: DNS + preconnect -->
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <!-- =========================================================
+         FONT PERFORMANCE
+         
+         Poppins + Inter are loaded ONCE here.
+         Do not dynamically load them again inside React.
+    ========================================================== -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Fonts: load only what your UI uses -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- ============================================================ -->
-    <!-- ENHANCED SEO + AEO + SCHEMA MARKUP (Structured Data)          -->
-    <!-- ============================================================ -->
+    <!-- =========================================================
+         STRUCTURED DATA
+    ========================================================== -->
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -93,7 +170,11 @@
               "contactType": "Customer Service",
               "email": "hello@cube4spaces.com",
               "areaServed": "IN",
-              "availableLanguage": ["English", "Tamil", "Hindi"]
+              "availableLanguage": [
+                "English",
+                "Tamil",
+                "Hindi"
+              ]
             },
             "description": "Cube4Spaces delivers premium interior design, turnkey construction, modular kitchens, wardrobes, and custom space solutions crafted for modern living."
           },
@@ -135,7 +216,14 @@
             },
             "openingHoursSpecification": {
               "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+              ],
               "opens": "09:00",
               "closes": "19:00"
             },
@@ -276,39 +364,79 @@
       }
     </script>
 
-    <!-- Delayed Google Analytics: improves first-load performance -->
+    <!-- =========================================================
+         GOOGLE ANALYTICS
+         
+         Delayed until browser is idle so it doesn't compete
+         with the initial React render.
+    ========================================================== -->
+
     <script>
       window.addEventListener("load", function () {
-        var loadAnalytics = function () {
-          var script = document.createElement("script");
+        const loadAnalytics = () => {
+          if (window.__cubeAnalyticsLoaded) {
+            return;
+          }
+
+          window.__cubeAnalyticsLoaded = true;
+
+          const script =
+            document.createElement("script");
+
           script.async = true;
+
           script.src =
             "https://www.googletagmanager.com/gtag/js?id=G-NFEXT5X1L9";
+
           document.head.appendChild(script);
 
-          window.dataLayer = window.dataLayer || [];
+          window.dataLayer =
+            window.dataLayer || [];
+
           function gtag() {
-            dataLayer.push(arguments);
+            window.dataLayer.push(arguments);
           }
 
           window.gtag = gtag;
-          gtag("js", new Date());
-          gtag("config", "G-NFEXT5X1L9", {
-            send_page_view: true
-          });
+
+          gtag(
+            "js",
+            new Date()
+          );
+
+          gtag(
+            "config",
+            "G-NFEXT5X1L9",
+            {
+              send_page_view: true
+            }
+          );
         };
 
-        if ("requestIdleCallback" in window) {
-          requestIdleCallback(loadAnalytics, { timeout: 3000 });
+        if (
+          "requestIdleCallback" in window
+        ) {
+          requestIdleCallback(
+            loadAnalytics,
+            {
+              timeout: 5000
+            }
+          );
         } else {
-          setTimeout(loadAnalytics, 2500);
+          setTimeout(
+            loadAnalytics,
+            4000
+          );
         }
       });
     </script>
   </head>
 
   <body>
-    <noscript>You need to enable JavaScript to run Cube4Spaces.</noscript>
+    <noscript>
+      You need to enable JavaScript to run Cube4Spaces.
+    </noscript>
+
     <div id="root"></div>
   </body>
 </html>

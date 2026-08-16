@@ -8,16 +8,13 @@ import {
   Building2,
   Ruler,
   ClipboardCheck,
-  Sparkles,
+
   CheckCircle2,
 } from "lucide-react";
 
 import AboutImage from "../../assests/team/herosection/cubehero3.webp";
 
 export default function About() {
-  const headingFont =
-    "font-[family-name:'Space_Grotesk','Plus_Jakarta_Sans',Inter,sans-serif]";
-
   const coreValues = [
     {
       icon: Award,
@@ -74,35 +71,34 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full overflow-hidden bg-[#f4f8ff] py-24 font-[family-name:Inter,sans-serif] text-slate-950 md:py-32"
+      className="relative w-full overflow-hidden bg-slate-50 py-12 md:py-24"
     >
-      {/* Soft background accents only */}
-      <div className="pointer-events-none absolute left-0 top-0 h-[420px] w-[420px] rounded-full bg-blue-300/20 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-[520px] w-[520px] rounded-full bg-sky-300/20 blur-[140px]" />
+      {/* Background Decor */}
+      <div className="pointer-events-none absolute left-0 top-0 h-[300px] w-[300px] rounded-full bg-indigo-200/30 blur-[100px] md:h-[500px] md:w-[500px]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[300px] w-[300px] rounded-full bg-slate-300/40 blur-[120px] md:h-[500px] md:w-[500px]" />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1700px] px-5 sm:px-8 lg:px-12 xl:px-16">
+      <div className="relative z-10 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-12 xl:px-16">
+        
         {/* Header */}
-        <div className="mb-14 grid gap-8 lg:mb-20 lg:grid-cols-[1fr_0.75fr] lg:items-end">
+        <div className="mb-10 grid gap-6 md:mb-16 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <div>
-            <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-blue-100 bg-white px-5 py-2.5 shadow-sm">
-              <Sparkles className="h-4 w-4 text-blue-700" />
-              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-white px-4 py-2 shadow-sm md:mb-6 md:px-5 md:py-2.5">
+            
+              <span className="font-['Poppins',sans-serif] text-xs font-bold uppercase tracking-[0.15em] text-indigo-700 md:text-sm">
                 About Cube4Spaces
               </span>
             </div>
 
-            <h1
-              className={`${headingFont} max-w-4xl text-4xl font-extrabold leading-[0.98] tracking-[-0.045em] text-slate-950 md:text-5xl`}
-            >
+            <h1 className="font-['Poppins',sans-serif] max-w-4xl text-4xl font-black leading-tight tracking-tight text-slate-950 md:text-5xl">
               Design, Build,
-              <span className="block text-blue-700">
+              <span className="block text-indigo-600">
                 and Deliver with Discipline.
               </span>
             </h1>
           </div>
 
           <div className="max-w-xl lg:ml-auto">
-            <p className="text-sm font-medium leading-7 text-slate-600 md:text-base">
+            <p className="font-['Inter',sans-serif] text-base font-medium leading-relaxed text-slate-600 md:text-lg">
               Cube4Spaces creates functional, elegant, and ready-to-use spaces
               through integrated interior design, construction, and turnkey
               project execution.
@@ -110,32 +106,31 @@ export default function About() {
 
             <button
               onClick={() => scrollToSection("contact")}
-              className="mt-7 inline-flex items-center gap-3 rounded-full bg-slate-950 px-7 py-4 text-xs font-black uppercase tracking-[0.16em] text-white shadow-lg transition-all hover:bg-blue-700 active:scale-[0.99]"
+              className="font-['Inter',sans-serif] mt-6 inline-flex w-full items-center justify-center gap-3 rounded-xl bg-slate-950 px-6 py-3.5 text-base font-semibold text-white shadow-md transition-all hover:bg-indigo-600 active:scale-95 sm:w-auto md:mt-8 md:px-8 md:py-4 md:text-lg"
             >
               Start Project
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-5 w-5" />
             </button>
           </div>
         </div>
 
         {/* Main About Block */}
-        <div className="mb-8 grid overflow-hidden rounded-[2rem] border border-blue-100 bg-white shadow-[0_24px_70px_rgba(37,99,235,0.10)] lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="relative min-h-[360px] overflow-hidden lg:min-h-[560px]">
+        <div className="mb-6 grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm md:mb-10 md:rounded-[2rem] lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative min-h-[250px] overflow-hidden md:min-h-[400px] lg:min-h-[600px]">
             <img
               src={AboutImage}
               alt="Cube4Spaces interior design and execution"
-              loading="eager"
+              loading="lazy"
               decoding="async"
-              className="h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent" />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-slate-950/10 to-transparent" />
-
-            <div className="absolute bottom-6 left-6 right-6 flex flex-wrap gap-2">
+            <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2 md:bottom-8 md:left-8 md:right-8">
               {["Design", "Build", "Handover"].map((item) => (
                 <span
                   key={item}
-                  className="rounded-full bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[0.16em] text-blue-700 shadow-sm"
+                  className="font-['Poppins',sans-serif] rounded-full bg-white/95 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 shadow-sm backdrop-blur md:px-4 md:py-2 md:text-xs"
                 >
                   {item}
                 </span>
@@ -143,18 +138,16 @@ export default function About() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center p-7 md:p-10 lg:p-12">
-            <span className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">
+          <div className="flex flex-col justify-center p-5 md:p-10 lg:p-12">
+            <span className="font-['Poppins',sans-serif] text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 md:text-sm">
               Our Story
             </span>
 
-            <h2
-              className={`${headingFont} mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-[-0.04em] text-slate-950 md:text-5xl`}
-            >
+            <h2 className="font-['Poppins',sans-serif] mt-3 max-w-2xl text-2xl font-black leading-tight text-slate-950 md:mt-4 md:text-4xl lg:text-5xl">
               We bring design and execution under one roof.
             </h2>
 
-            <p className="mt-6 max-w-3xl text-sm font-medium leading-7 text-slate-600 md:text-base">
+            <p className="font-['Inter',sans-serif] mt-4 max-w-2xl text-sm font-medium leading-relaxed text-slate-600 md:mt-6 md:text-base lg:text-lg">
               Cube4Spaces was built to solve a common problem in construction
               and interiors: poor coordination between design teams, vendors,
               contractors, and site execution. We simplify the process by
@@ -162,31 +155,21 @@ export default function About() {
               handover through one responsible team.
             </p>
 
-            <p className="mt-4 max-w-3xl text-sm font-medium leading-7 text-slate-600 md:text-base">
-              Our focus is simple: create spaces that look refined, function
-              well, and are delivered with professional discipline.
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 md:mt-10 md:gap-5">
               {highlights.map((item) => {
                 const Icon = item.icon;
-
                 return (
                   <div
                     key={item.title}
-                    className="rounded-[1.5rem] border border-blue-100 bg-[#f4f8ff] p-5 transition-all hover:border-blue-300 hover:bg-white"
+                    className="rounded-xl border border-slate-100 bg-slate-50 p-4 transition-all hover:border-indigo-100 hover:bg-white hover:shadow-md md:rounded-2xl md:p-5"
                   >
-                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-blue-100 bg-white text-blue-700 shadow-sm">
-                      <Icon className="h-5 w-5" />
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-indigo-600 shadow-sm md:mb-4 md:h-12 md:w-12 md:rounded-xl">
+                      <Icon className="h-5 w-5" strokeWidth={2.5} />
                     </div>
-
-                    <h3
-                      className={`${headingFont} text-base font-extrabold leading-snug tracking-[-0.025em] text-slate-950`}
-                    >
+                    <h3 className="font-['Poppins',sans-serif] text-base font-bold leading-snug text-slate-950 md:text-lg">
                       {item.title}
                     </h3>
-
-                    <p className="mt-3 text-sm font-medium leading-6 text-slate-500">
+                    <p className="font-['Inter',sans-serif] mt-2 text-xs font-medium leading-relaxed text-slate-500 md:text-sm">
                       {item.desc}
                     </p>
                   </div>
@@ -196,20 +179,18 @@ export default function About() {
           </div>
         </div>
 
-        {/* Mission + Advantage - no dark block */}
-        <div className="mb-8 grid gap-8 lg:grid-cols-2">
-          <article className="rounded-[2rem] border border-blue-100 bg-white p-7 shadow-sm md:p-10 lg:p-12">
-            <span className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">
+        {/* Mission + Advantage */}
+        <div className="mb-6 grid gap-6 lg:grid-cols-2 md:mb-10 md:gap-8">
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:rounded-[2rem] md:p-10 lg:p-12">
+            <span className="font-['Poppins',sans-serif] text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 md:text-sm">
               Mission
             </span>
 
-            <h3
-              className={`${headingFont} mt-4 max-w-2xl text-3xl font-extrabold leading-tight tracking-[-0.04em] text-slate-950 md:text-5xl`}
-            >
+            <h3 className="font-['Poppins',sans-serif] mt-3 max-w-2xl text-2xl font-black leading-tight text-slate-950 md:mt-4 md:text-4xl lg:text-5xl">
               Spaces that feel beautiful and work better.
             </h3>
 
-            <p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-slate-600 md:text-base">
+            <p className="font-['Inter',sans-serif] mt-4 max-w-2xl text-base font-medium leading-relaxed text-slate-600 md:mt-6 md:text-lg">
               Our mission is to create residential and commercial spaces that
               are practical, elegant, and built to last. We combine smart
               layouts, material discipline, and transparent coordination to
@@ -217,31 +198,29 @@ export default function About() {
             </p>
           </article>
 
-          <article className="rounded-[2rem] border border-blue-100 bg-white p-7 shadow-sm md:p-10 lg:p-12">
-            <span className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:rounded-[2rem] md:p-10 lg:p-12">
+            <span className="font-['Poppins',sans-serif] text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 md:text-sm">
               Advantage
             </span>
 
-            <h3
-              className={`${headingFont} mt-4 max-w-2xl text-3xl font-extrabold leading-tight tracking-[-0.04em] text-slate-950 md:text-5xl`}
-            >
-              One team. One timeline. One quality standard.
+            <h3 className="font-['Poppins',sans-serif] mt-3 max-w-2xl text-2xl font-black leading-tight text-slate-950 md:mt-4 md:text-4xl lg:text-5xl">
+              One team. One timeline. One standard.
             </h3>
 
-            <p className="mt-6 max-w-2xl text-sm font-medium leading-7 text-slate-600 md:text-base">
+            <p className="font-['Inter',sans-serif] mt-4 max-w-2xl text-base font-medium leading-relaxed text-slate-600 md:mt-6 md:text-lg">
               Instead of managing separate designers, contractors, and vendors,
               you work with one coordinated team. This helps avoid delays,
               confusion, cost leakage, and execution gaps.
             </p>
 
-            <div className="mt-8 grid gap-3">
+            <div className="mt-6 grid gap-3 md:mt-8">
               {operatingPrinciples.map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-3 rounded-2xl border border-blue-100 bg-blue-50 px-4 py-3"
+                  className="flex items-center gap-3 rounded-xl border border-indigo-100 bg-indigo-50/50 px-4 py-3 md:rounded-2xl"
                 >
-                  <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-blue-700" />
-                  <span className="text-sm font-bold text-slate-700">
+                  <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-indigo-600" strokeWidth={2.5} />
+                  <span className="font-['Inter',sans-serif] text-sm font-semibold text-slate-700 md:text-base">
                     {item}
                   </span>
                 </div>
@@ -251,46 +230,37 @@ export default function About() {
         </div>
 
         {/* Core Values */}
-        <div className="mb-8 rounded-[2rem] border border-blue-100 bg-white p-7 shadow-sm md:p-10 lg:p-12">
-          <div className="mb-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+        <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:mb-10 md:rounded-[2rem] md:p-10 lg:p-12">
+          <div className="mb-8 grid gap-4 lg:grid-cols-[1fr_1fr] lg:items-end md:mb-12 md:gap-8">
             <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">
+              <span className="font-['Poppins',sans-serif] text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 md:text-sm">
                 Core Values
               </span>
-
-              <h3
-                className={`${headingFont} mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-[-0.04em] text-slate-950 md:text-5xl`}
-              >
+              <h3 className="font-['Poppins',sans-serif] mt-2 max-w-2xl text-3xl font-black leading-tight text-slate-950 md:mt-4 md:text-4xl lg:text-5xl">
                 The principles behind every project.
               </h3>
             </div>
-
-            <p className="max-w-2xl text-sm font-medium leading-7 text-slate-600 md:text-base lg:ml-auto">
+            <p className="font-['Inter',sans-serif] max-w-xl text-base font-medium leading-relaxed text-slate-600 lg:ml-auto md:text-lg">
               Good interiors are not created only by design. They are created
               through discipline, detail, communication, and ownership.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 xl:grid-cols-4">
             {coreValues.map((value) => {
               const Icon = value.icon;
-
               return (
                 <article
                   key={value.title}
-                  className="group rounded-[1.75rem] border border-blue-100 bg-[#f4f8ff] p-7 transition-all hover:-translate-y-1 hover:border-blue-300 hover:bg-white hover:shadow-[0_24px_70px_rgba(37,99,235,0.10)]"
+                  className="group rounded-xl border border-slate-100 bg-slate-50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:bg-white hover:shadow-xl md:rounded-2xl md:p-8"
                 >
-                  <div className="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-100 bg-white text-blue-700 shadow-sm transition-all group-hover:bg-blue-700 group-hover:text-white">
-                    <Icon className="h-6 w-6" />
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white text-indigo-600 shadow-sm transition-colors group-hover:border-indigo-600 group-hover:bg-indigo-600 group-hover:text-white md:mb-8 md:h-14 md:w-14">
+                    <Icon className="h-6 w-6" strokeWidth={2.5} />
                   </div>
-
-                  <h4
-                    className={`${headingFont} text-2xl font-extrabold tracking-[-0.035em] text-slate-950`}
-                  >
+                  <h4 className="font-['Poppins',sans-serif] text-xl font-bold text-slate-950 md:text-2xl">
                     {value.title}
                   </h4>
-
-                  <p className="mt-4 text-sm font-medium leading-6 text-slate-600">
+                  <p className="font-['Inter',sans-serif] mt-2 text-sm font-medium leading-relaxed text-slate-600 md:mt-3 md:text-base">
                     {value.desc}
                   </p>
                 </article>
@@ -300,19 +270,15 @@ export default function About() {
         </div>
 
         {/* Team + Execution Culture */}
-        <div className="mb-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="rounded-[2rem] border border-blue-100 bg-white p-7 shadow-sm md:p-10 lg:p-12">
-            <span className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">
+        <div className="mb-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] md:mb-12 md:gap-8">
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:rounded-[2rem] md:p-10 lg:p-12">
+            <span className="font-['Poppins',sans-serif] text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 md:text-sm">
               Team
             </span>
-
-            <h3
-              className={`${headingFont} mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-[-0.04em] text-slate-950 md:text-5xl`}
-            >
+            <h3 className="font-['Poppins',sans-serif] mt-3 max-w-2xl text-2xl font-black leading-tight text-slate-950 md:mt-4 md:text-4xl lg:text-5xl">
               Designers, engineers, managers, and skilled execution partners.
             </h3>
-
-            <p className="mt-6 max-w-3xl text-sm font-medium leading-7 text-slate-600 md:text-base">
+            <p className="font-['Inter',sans-serif] mt-4 max-w-2xl text-base font-medium leading-relaxed text-slate-600 md:mt-6 md:text-lg">
               We bring together interior designers, construction professionals,
               project coordinators, and skilled craftsmen to deliver a complete
               project experience. Our approach is collaborative, practical, and
@@ -320,18 +286,14 @@ export default function About() {
             </p>
           </article>
 
-          <article className="rounded-[2rem] border border-blue-100 bg-white p-7 shadow-sm md:p-10 lg:p-12">
-            <span className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:rounded-[2rem] md:p-10 lg:p-12">
+            <span className="font-['Poppins',sans-serif] text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 md:text-sm">
               Execution Culture
             </span>
-
-            <h3
-              className={`${headingFont} mt-4 text-3xl font-extrabold leading-tight tracking-[-0.04em] text-slate-950 md:text-5xl`}
-            >
+            <h3 className="font-['Poppins',sans-serif] mt-3 text-2xl font-black leading-tight text-slate-950 md:mt-4 md:text-4xl lg:text-5xl">
               Detail is the difference.
             </h3>
-
-            <p className="mt-6 text-sm font-medium leading-7 text-slate-600 md:text-base">
+            <p className="font-['Inter',sans-serif] mt-4 text-base font-medium leading-relaxed text-slate-600 md:mt-6 md:text-lg">
               We focus on planning before execution, site coordination during
               work, and final checks before handover. That is how we protect
               design intent, budget discipline, and client confidence.
@@ -339,21 +301,17 @@ export default function About() {
           </article>
         </div>
 
-        {/* Final CTA - no blue block */}
-        <div className="rounded-[2rem] border border-blue-100 bg-white p-7 shadow-[0_24px_70px_rgba(37,99,235,0.10)] md:p-10 lg:p-12">
-          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+        {/* Final CTA */}
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg md:rounded-[2.5rem] md:p-10 lg:p-14">
+          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center md:gap-10">
             <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.22em] text-blue-700">
+              <span className="font-['Poppins',sans-serif] text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 md:text-sm">
                 Your vision guides everything we do
               </span>
-
-              <h3
-                className={`${headingFont} mt-4 max-w-4xl text-3xl font-extrabold leading-tight tracking-[-0.04em] text-slate-950 md:text-5xl`}
-              >
+              <h3 className="font-['Poppins',sans-serif] mt-3 max-w-3xl text-3xl font-black leading-tight text-slate-950 md:mt-4 md:text-4xl lg:text-5xl">
                 Ready to build beyond ordinary?
               </h3>
-
-              <p className="mt-5 max-w-2xl text-sm font-medium leading-7 text-slate-600 md:text-base">
+              <p className="font-['Inter',sans-serif] mt-4 max-w-xl text-base font-medium leading-relaxed text-slate-600 md:mt-5 md:text-lg">
                 Share your requirement and our team will guide you with the
                 right design, budget, and execution plan.
               </p>
@@ -362,14 +320,15 @@ export default function About() {
             <div className="lg:text-right">
               <button
                 onClick={() => scrollToSection("contact")}
-                className="inline-flex items-center gap-3 rounded-full bg-slate-950 px-8 py-4 text-xs font-black uppercase tracking-[0.16em] text-white shadow-lg transition-all hover:bg-blue-700 active:scale-[0.99]"
+                className="font-['Inter',sans-serif] inline-flex w-full items-center justify-center gap-3 rounded-xl bg-slate-950 px-6 py-4 text-base font-semibold text-white shadow-md transition-all hover:bg-indigo-600 active:scale-95 sm:w-auto md:rounded-full md:px-10 md:py-5 md:text-lg"
               >
                 Start Project
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-5 w-5" />
               </button>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

@@ -8,12 +8,13 @@ import Footer from "./components/pages/Footer";
 import Whatsapp from "./components/pages/whatsapp"; 
 import Aboutus from "./components/pages/Aboutpage";
 import Contact from "./components/pages/Contactpage";
-
+import ScrollToTop from "./components/pages/ScrollToTop";
 function App() {
   return (
     <Router>
      
         <Nav />
+        <ScrollToTop />
 
         <main>
           <Routes>

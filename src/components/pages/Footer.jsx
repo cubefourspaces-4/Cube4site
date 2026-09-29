@@ -39,10 +39,10 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-2 md:gap-3">
               {[
-                { icon: MessageCircle, href: "#" },
-                { icon: X, href: "#" },
-                { icon: Instagram, href: "#" },
-                { icon: Linkedin, href: "#" },
+                { icon: MessageCircle, href: "https://wa.me/919876543210" },
+                { icon: X, href: "https://twitter.com/cube4spaces" },
+                { icon: Instagram, href: "https://www.instagram.com/cube4spaces/" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/cube4spaces/" },
               ].map((item, i) => {
                 const Icon = item.icon;
                 return (

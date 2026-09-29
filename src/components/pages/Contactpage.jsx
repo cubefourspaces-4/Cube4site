@@ -129,7 +129,7 @@ export default function App() {
                   </span>
                 </div>
 
-                <h1 className="font-poppins text-4xl font-black leading-[1.15] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl xl:text-7xl">
+                <h1 className="font-poppins text-4xl font-black leading-[1.15] tracking-tight text-slate-950 sm:text-5xl lg:text-5xl xl:text-5xl">
                   Transforming Blank Spaces Into{' '}
                   <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
                     Architectural Masterpieces.

@@ -6,7 +6,6 @@ import {
   Mail,
   Clock,
   MapPin,
-
 } from "lucide-react";
 import Lenis from "@studio-freight/lenis";
 
@@ -22,21 +21,26 @@ export default function Contact() {
     source: "",
   });
 
+  // Smooth scrolling
   useEffect(() => {
     const lenis = new Lenis({
-      smooth: true,
       lerp: 0.1,
       wheelMultiplier: 1.2,
     });
 
+    let animationFrameId;
+
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      animationFrameId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    animationFrameId = requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      lenis.destroy();
+    };
   }, []);
 
   const handleSubmit = (e) => {
@@ -45,10 +49,12 @@ export default function Contact() {
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const inputClass =
@@ -64,15 +70,14 @@ export default function Contact() {
     >
       {/* Background Decor */}
       <div className="pointer-events-none absolute left-0 top-0 h-[300px] w-[300px] rounded-full bg-indigo-200/30 blur-[100px] md:h-[400px] md:w-[400px]" />
+
       <div className="pointer-events-none absolute bottom-0 right-0 h-[300px] w-[300px] rounded-full bg-slate-200/40 blur-[100px] md:h-[500px] md:w-[500px]" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-12 xl:px-16">
-        
         {/* Header */}
         <div className="mb-10 grid gap-6 md:mb-16 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <div>
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-white px-4 py-1.5 shadow-sm md:mb-6 md:px-5 md:py-2.5">
- 
               <span className="font-['Poppins',sans-serif] text-[10px] font-bold uppercase tracking-wider text-indigo-700 md:text-xs md:tracking-[0.2em]">
                 Get In Touch
               </span>
@@ -107,8 +112,7 @@ export default function Contact() {
         </div>
 
         {/* Main Layout */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.2fr_0.8fr] md:gap-8">
-          
+        <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           {/* Contact Form */}
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:rounded-[2rem] md:p-10 lg:p-12">
             <div className="mb-8 flex flex-col justify-between gap-4 border-b border-slate-100 pb-6 md:mb-10 md:flex-row md:items-end md:pb-8">
@@ -116,22 +120,29 @@ export default function Contact() {
                 <span className="font-['Poppins',sans-serif] text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-600 md:text-xs">
                   Project Enquiry
                 </span>
+
                 <h3 className="font-['Poppins',sans-serif] mt-2 text-2xl font-bold leading-tight text-slate-950 md:mt-3 md:text-3xl lg:text-4xl">
                   Send Us a Message
                 </h3>
               </div>
+
               <p className="font-['Inter',sans-serif] max-w-sm text-xs font-medium leading-relaxed text-slate-500 md:text-sm">
                 This form helps us qualify scope, timeline, and project
                 readiness before the first discussion.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5 md:space-y-7">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-5 md:space-y-7"
+            >
+              {/* Name and Email */}
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-7">
                 <div>
                   <label htmlFor="name" className={labelClass}>
                     Full Name *
                   </label>
+
                   <input
                     type="text"
                     id="name"
@@ -143,10 +154,12 @@ export default function Contact() {
                     placeholder="e.g., Rajesh Sharma"
                   />
                 </div>
+
                 <div>
                   <label htmlFor="email" className={labelClass}>
                     Email Address *
                   </label>
+
                   <input
                     type="email"
                     id="email"
@@ -160,11 +173,13 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* Phone and Project Type */}
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-7">
                 <div>
                   <label htmlFor="phone" className={labelClass}>
                     Phone Number *
                   </label>
+
                   <input
                     type="tel"
                     id="phone"
@@ -176,10 +191,12 @@ export default function Contact() {
                     placeholder="+91 98765 43210"
                   />
                 </div>
+
                 <div>
                   <label htmlFor="projectType" className={labelClass}>
                     Project Type *
                   </label>
+
                   <select
                     id="projectType"
                     name="projectType"
@@ -189,21 +206,33 @@ export default function Contact() {
                     className={inputClass}
                   >
                     <option value="">Select one</option>
-                    <option value="Residential Interiors">Residential Interiors</option>
-                    <option value="Commercial Interiors">Commercial Interiors</option>
-                    <option value="Construction Only">Construction Only</option>
-                    <option value="Turnkey">Turnkey (Construction + Interiors)</option>
-                    <option value="Modular Kitchen">Modular Kitchen / Wardrobe Only</option>
+                    <option value="Residential Interiors">
+                      Residential Interiors
+                    </option>
+                    <option value="Commercial Interiors">
+                      Commercial Interiors
+                    </option>
+                    <option value="Construction Only">
+                      Construction Only
+                    </option>
+                    <option value="Turnkey">
+                      Turnkey (Construction + Interiors)
+                    </option>
+                    <option value="Modular Kitchen">
+                      Modular Kitchen / Wardrobe Only
+                    </option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
               </div>
 
+              {/* Location and Budget */}
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-7">
                 <div>
                   <label htmlFor="location" className={labelClass}>
                     City / Location *
                   </label>
+
                   <input
                     type="text"
                     id="location"
@@ -215,10 +244,12 @@ export default function Contact() {
                     placeholder="e.g., Coimbatore, Bangalore"
                   />
                 </div>
+
                 <div>
                   <label htmlFor="budget" className={labelClass}>
                     Estimated Budget ₹
                   </label>
+
                   <select
                     id="budget"
                     name="budget"
@@ -238,10 +269,12 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* Project Description */}
               <div>
                 <label htmlFor="message" className={labelClass}>
                   Project Description *
                 </label>
+
                 <textarea
                   id="message"
                   name="message"
@@ -249,15 +282,17 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className={`${inputClass} resize-none md:rows-6`}
+                  className={`${inputClass} resize-none`}
                   placeholder="Tell us about your space, requirements, and timeline..."
                 />
               </div>
 
+              {/* How did you hear about us */}
               <div>
                 <label htmlFor="source" className={labelClass}>
                   How did you hear about us?
                 </label>
+
                 <select
                   id="source"
                   name="source"
@@ -275,14 +310,17 @@ export default function Contact() {
                 </select>
               </div>
 
+              {/* Submit Button */}
               <div className="pt-2 md:pt-4">
                 <button
                   type="submit"
                   className="font-['Inter',sans-serif] group inline-flex w-full items-center justify-center gap-3 rounded-xl bg-indigo-600 px-6 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-indigo-700 active:scale-95 md:rounded-2xl md:px-8 md:py-5 md:text-base md:tracking-[0.15em]"
                 >
                   Send Message
+
                   <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 md:h-5 md:w-5" />
                 </button>
+
                 <p className="font-['Inter',sans-serif] mt-4 text-center text-[10px] font-medium text-slate-400 md:mt-5 md:text-xs">
                   We respect your privacy. Your details will never be shared.
                 </p>
@@ -302,65 +340,80 @@ export default function Contact() {
               </h3>
 
               <div className="mt-6 space-y-5 md:mt-8 md:space-y-7">
+                {/* Phone */}
                 <div className="flex gap-3 md:gap-4">
                   <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50 text-indigo-600 md:h-12 md:w-12 md:rounded-2xl">
                     <Phone className="h-4 w-4 md:h-5 md:w-5" />
                   </div>
+
                   <div>
                     <h4 className="font-['Poppins',sans-serif] mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 md:mb-2 md:text-xs md:tracking-[0.15em]">
                       Phone
                     </h4>
+
                     <p className="font-['Inter',sans-serif] text-sm font-semibold text-slate-700 md:text-base">
                       +91 98765 43210
                     </p>
+
                     <p className="font-['Inter',sans-serif] mt-0.5 text-sm font-semibold text-slate-700 md:mt-1 md:text-base">
                       +91 87654 32109
                     </p>
                   </div>
                 </div>
 
+                {/* Email */}
                 <div className="flex gap-3 md:gap-4">
                   <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50 text-indigo-600 md:h-12 md:w-12 md:rounded-2xl">
                     <Mail className="h-4 w-4 md:h-5 md:w-5" />
                   </div>
+
                   <div className="min-w-0">
                     <h4 className="font-['Poppins',sans-serif] mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 md:mb-2 md:text-xs md:tracking-[0.15em]">
                       Email
                     </h4>
+
                     <p className="font-['Inter',sans-serif] truncate text-sm font-semibold text-slate-700 md:text-base">
-                      hello@cube4spaces.com
+                      cube4spaces.in
                     </p>
+
                     <p className="font-['Inter',sans-serif] mt-0.5 truncate text-sm font-semibold text-slate-700 md:mt-1 md:text-base">
-                      projects@cube4spaces.com
+                      cubefourspaces@gmail.com
                     </p>
                   </div>
                 </div>
 
+                {/* Office Hours */}
                 <div className="flex gap-3 md:gap-4">
                   <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50 text-indigo-600 md:h-12 md:w-12 md:rounded-2xl">
                     <Clock className="h-4 w-4 md:h-5 md:w-5" />
                   </div>
+
                   <div>
                     <h4 className="font-['Poppins',sans-serif] mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 md:mb-2 md:text-xs md:tracking-[0.15em]">
                       Office Hours
                     </h4>
+
                     <p className="font-['Inter',sans-serif] text-sm font-semibold text-slate-700 md:text-base">
                       Mon – Sat: 9:00 AM – 7:00 PM
                     </p>
+
                     <p className="font-['Inter',sans-serif] mt-1 text-xs font-medium text-slate-500 md:text-sm">
                       Sunday visits by appointment
                     </p>
                   </div>
                 </div>
 
+                {/* Office Address */}
                 <div className="flex gap-3 md:gap-4">
                   <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50 text-indigo-600 md:h-12 md:w-12 md:rounded-2xl">
                     <MapPin className="h-4 w-4 md:h-5 md:w-5" />
                   </div>
+
                   <div>
                     <h4 className="font-['Poppins',sans-serif] mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 md:mb-2 md:text-xs md:tracking-[0.15em]">
                       Office Address
                     </h4>
+
                     <p className="font-['Inter',sans-serif] text-sm font-medium leading-relaxed text-slate-600 md:text-base">
                       #15, 5th Cross, Race Course Road
                       <br />
@@ -374,10 +427,12 @@ export default function Contact() {
                 </div>
               </div>
 
+              {/* Service Areas */}
               <div className="mt-6 border-t border-slate-100 pt-5 md:mt-8 md:pt-6">
                 <h4 className="font-['Poppins',sans-serif] mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-500 md:mb-3 md:text-xs md:tracking-[0.15em]">
                   Service Areas
                 </h4>
+
                 <p className="font-['Inter',sans-serif] text-sm font-medium leading-relaxed text-slate-600 md:text-base">
                   Coimbatore, Chennai, Bangalore, Mumbai, Pune, and Hyderabad.
                 </p>
@@ -393,16 +448,18 @@ export default function Contact() {
               <span className="font-['Poppins',sans-serif] text-[10px] font-bold uppercase tracking-wider text-indigo-600 md:text-xs md:tracking-[0.2em]">
                 Location
               </span>
+
               <h3 className="font-['Poppins',sans-serif] mt-1 text-2xl font-bold leading-tight text-slate-950 md:mt-2 md:text-3xl lg:text-4xl">
                 Find Us Here
               </h3>
+
               <p className="font-['Inter',sans-serif] mt-2 text-xs font-medium text-slate-500 md:mt-3 md:text-sm">
                 Our main design studio and project coordination office.
               </p>
             </div>
 
             <a
-              href="https://maps.google.com"
+              href="https://maps.google.com/?q=Cube+4+spaces"
               target="_blank"
               rel="noopener noreferrer"
               className="font-['Inter',sans-serif] inline-flex items-center justify-center gap-2 rounded-xl border border-indigo-100 bg-indigo-50 px-4 py-3 text-[10px] font-bold uppercase tracking-wider text-indigo-700 transition-all hover:border-indigo-200 hover:bg-white md:rounded-full md:px-5 md:text-xs md:tracking-[0.15em]"
@@ -412,16 +469,17 @@ export default function Contact() {
             </a>
           </div>
 
+          {/* Updated Cube 4 Spaces Google Maps Embed */}
           <div className="h-[300px] overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm md:h-[420px] md:rounded-[1.5rem]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.101235332616!2d76.9558443750419!3d11.01397028909876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba85906a1a1a1a1%3A0x1a1a1a1a1a1a1a1a!2sCoimbatore%2C+Tamil+Nadu!5e0!3m2!1sen!2sin!4v1715000000000!3m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16593.456704703814!2d77.00345953278574!3d11.073477335096785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8f7d22a2e74b7%3A0x1cf0c55fe95cc923!2sCube%204%20spaces!5e0!3m2!1sen!2sin!4v1790678432943!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
-              allowFullScreen=""
+              allowFullScreen
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Office Location Map"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="Cube 4 Spaces Office Location"
               className="grayscale contrast-100 filter transition-all hover:grayscale-0"
             />
           </div>
@@ -432,15 +490,16 @@ export default function Contact() {
           <span className="font-['Poppins',sans-serif] text-[10px] font-bold uppercase tracking-wider text-indigo-600 md:text-xs md:tracking-[0.2em]">
             Response SLA
           </span>
+
           <h3 className="font-['Poppins',sans-serif] mt-2 text-xl font-bold leading-tight text-slate-950 md:mt-3 md:text-2xl lg:text-3xl">
             We’ll Get Back to You Soon
           </h3>
+
           <p className="font-['Inter',sans-serif] mx-auto mt-3 max-w-md text-xs font-medium leading-relaxed text-slate-600 md:mt-4 md:text-sm">
             Every inquiry is reviewed by our team. Expect a response within 24
             hours, often sooner.
           </p>
         </div>
-        
       </div>
     </section>
   );

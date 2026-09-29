@@ -22,9 +22,9 @@ export default function Navigation() {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/" },
+    { name: "About", path: "/about" },
     { name: "Portfolio", path: "/" },
-    { name: "Contact", path: "/" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const serviceItems = [

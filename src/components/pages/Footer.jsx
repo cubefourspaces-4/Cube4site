@@ -27,7 +27,7 @@ export default function Footer() {
               className="h-12 w-auto object-contain brightness-0 invert md:h-16"
             />
             <div className="mt-16 max-w-[300px] md:mt-24">
-              <h3 className="font-['Poppins',sans-serif] text-3xl font-black leading-tight tracking-tight text-white md:text-4xl lg:text-5xl">
+              <h3 className="font-['Poppins',sans-serif] text-3xl font-black leading-tight  text-white md:text-4xl lg:text-4xl">
                 Smarter design execution.
               </h3>
             </div>
